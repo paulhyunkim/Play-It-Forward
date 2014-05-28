@@ -1,0 +1,61 @@
+@import "bootstrap";
+
+.sectionbox {
+	padding:100px;
+	height:720px;
+	font-family: "Oswald";
+}
+
+#introbox {
+	background-color: #FFD300;	
+}
+
+#introbox h1{
+	font-size: 100px;
+	padding-top:100px;
+	text-align: center;
+}
+
+#introbox h2{
+	color:red;
+	text-align: center;
+}
+
+#whoarewe {
+	padding-top:150px;
+	background-color:red;
+}
+#whoarewe img{
+	float:right;
+	border:5px solid white;
+}
+
+#whoarewe h1{	
+	font-size:100px;
+	color:white;
+}
+
+#test {
+	width:50%;
+	float:left;
+}
+
+nav{
+	background-color:#FFF2B3;
+	height:80px;
+	padding:20px;
+}
+
+.navbutton {
+	border:none;
+	background-color:#FFF2b3;	
+	font-size: 18px;
+	font-weight:bold;
+	font-family: 'Raleway', sans-serif;
+}
+
+button:hover{
+	color:red;
+	border-bottom:1px solid red;
+	-webkit-transition: all 400ms;
+}
