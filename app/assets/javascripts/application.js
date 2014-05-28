@@ -12,5 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap
 //= require_tree .
+
+
+
+ $(document).ready(function(){
+ 
+	$('#introbox h1').hide().fadeIn(2000);
+	$('#introbox h2').hide().delay(700).fadeIn(2000);
+ 
+ 
+}); //closes document.ready
