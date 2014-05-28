@@ -7,6 +7,8 @@ gem 'rails', '4.0.4'
 gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
