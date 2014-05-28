@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
-gem 'bootstrap-sass', '2.3.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -50,5 +51,3 @@ end
 group :development, :test do    
 	gem "rspec-rails"
 end
-
-
