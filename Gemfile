@@ -8,6 +8,8 @@ gem 'bootstrap-sass', '~> 3.1.1.0'
 gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -50,5 +52,3 @@ end
 group :development, :test do    
 	gem "rspec-rails"
 end
-
-
