@@ -134,10 +134,14 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgis-adapter
 <<<<<<< HEAD
+<<<<<<< HEAD
   bcrypt-ruby (~> 3.1.2)
 =======
   bootstrap-sass (~> 3.1.1.0)
 >>>>>>> master
+=======
+  bcrypt-ruby (~> 3.1.2)
+>>>>>>> 6240c0f649d894b338f4d7e7b710c33062db3f65
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails

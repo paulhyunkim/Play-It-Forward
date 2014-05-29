@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 	validates :age,  numericality: { only_integer: true, greater_than: 13, less_than: 120 }
 
-
 	has_many :playlists
 	has_many :songs
 
@@ -28,7 +27,6 @@ class User < ActiveRecord::Base
 		User.select("*").select(range).where("id != ?", self.id).order("range ASC").limit(quantity)
 	end
 	# can call .range on returned users to see distance to user
-
 
 
 end
