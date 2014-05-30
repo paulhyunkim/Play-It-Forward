@@ -27,9 +27,70 @@ $(function(){ $(document).foundation(); });
 
 
 
+//Nav bar fade. Disappear by 2nd div.
+$(function(){
+    var fadeBegin = 500, 
+    fadeFinish = 690, 
+    fadingElement = $('.nav');
+
+$(window).on('scroll', function(){
+    var offset = $(document).scrollTop(), opacity = 0; 
+    console.log(offset);
+    if( offset <= fadeBegin ){
+        opacity = 1; 
+    } else if( offset <= fadeFinish ){
+        opacity = 1 - offset / fadeFinish;
+
+    }
+    fadingElement.css('opacity',opacity);
+});
+    
+    });
+
+//Nav bar appear on 3rd div.
+
+
+//--------------------------------
 
 
 
+
+//Scroll to second div
+  $(document).ready(function(){
+    $('a[href="#whoarewe"]').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+      && location.hostname == this.hostname) {
+        var $target = $(this.hash);
+        $target = $target.length && $target
+        || $('[name=' + this.hash.slice(1) +']');
+        if ($target.length) {
+          var targetOffset = $target.offset().top;
+          $('html,body')
+          .animate({scrollTop: targetOffset}, 1000);
+         return false;
+        }
+      }
+    });
+  });
+
+//Scroll to bottom div
+  $(document).ready(function(){
+    $('a[href="#signup"]').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+      && location.hostname == this.hostname) {
+        var $target = $(this.hash);
+        $target = $target.length && $target
+        || $('[name=' + this.hash.slice(1) +']');
+        if ($target.length) {
+          var targetOffset = $target.offset().top;
+          $('html,body')
+          .animate({scrollTop: targetOffset}, 1000);
+         return false;
+        }
+      }
+    });
+  });
+  
 
 
 
