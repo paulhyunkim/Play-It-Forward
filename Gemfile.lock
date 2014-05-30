@@ -46,6 +46,9 @@ GEM
     erubis (2.7.0)
     execjs (2.1.0)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -57,9 +60,12 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta-spotify (0.3.3)
+      httparty (> 0.8)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     pg (0.17.1)
     polyglot (0.3.4)
     rack (1.5.2)
@@ -135,10 +141,10 @@ DEPENDENCIES
   activerecord-postgis-adapter
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass (~> 3.1.1.0)
-  bcrypt-ruby (~> 3.1.2)
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
+  meta-spotify
   pg
   rails (= 4.0.4)
   rgeo
