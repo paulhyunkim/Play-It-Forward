@@ -1,10 +1,16 @@
-
 @import "bootstrap";
+
+
+@font-face {
+font-family:'Brandon Grotesque Bold';
+src: URL('brandon_grotesque_bold.ttf')
+}
 
 .sectionbox {
 	padding:100px;
-	height:720px;
-	font-family: "Oswald";
+	height:800px;
+	overflow:hidden;
+	font-family: 'Brandon Grotesque Bold';	
 }
 
 #introbox {
@@ -17,46 +23,88 @@
 	text-align: center;
 }
 
-#introbox h2{
-	color:red;
-	text-align: center;
-}
-
-#whoarewe {
-	padding-top:150px;
-	background-color:red;
-}
-#whoarewe img{
-	float:right;
-	border:5px solid white;
-}
-
-#whoarewe h1{	
-	font-size:100px;
-	color:white;
-}
-
-#test {
-	width:50%;
+#playlistimage{
+	width:40%;
 	float:left;
 }
 
+
+#introbox h2{
+	color:red;
+	font-family:"Oswald";
+	text-align: center;
+}
+
+#whoarewe{
+	padding-top:150px;	
+	text-align:center;
+}
+
+#whoarewe h1{
+	font-size: 50px;
+}
+
+#signup{
+	background-color: #F9F9F9;
+	
+}
+
+#signup h1{
+	text-align: center;
+	font-size: 100px;
+}
+
 nav{
-	background-color:#FFF2B3;
+	background-color:black;
+	color:white;
 	height:80px;
 	padding:20px;
 }
 
 .navbutton {
 	border:none;
-	background-color:#FFF2b3;	
-	font-size: 18px;
+	background-color:black;	
+	font-size: 20px;
 	font-weight:bold;
 	font-family: 'Raleway', sans-serif;
 }
 
-button:hover{
+/*button:hover{
 	color:red;
 	border-bottom:1px solid red;
 	-webkit-transition: all 400ms;
 }
+*/
+@media only screen and (max-width: 444px) {
+
+
+.sectionbox {
+	padding:70px;
+}
+
+#whoarewe {
+	padding:0;
+}
+
+#lorem1 h1{
+	line-height: 0.8;
+	padding:20px 0;
+	text-align: center;
+	font-size:80px;
+}
+
+#lorem2 h1{
+	line-height: 0.8;
+	padding-bottom:20px;
+	text-align: center;
+	font-size:80px;
+}
+
+#lorem3 h1{
+	line-height: 0.8;
+	padding-bottom:20px;
+	text-align: center;
+	font-size:80px;
+}
+
+} 

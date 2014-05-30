@@ -12,6 +12,9 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'meta-spotify'
 
 
+gem 'foundation-rails'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
