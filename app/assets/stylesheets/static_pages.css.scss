@@ -13,18 +13,37 @@ src: URL('brandon_grotesque_bold.ttf')
 	height:710px;
 	overflow:hidden;
 	font-family: 'Brandon Grotesque Bold';	
+	text-align:center;
+
+	
 }
 
 #introbox {
-	background-image: url('ddrive.jpg');
+	background-image: url('top1.jpg');
 	background-size: cover;
-}
-
-#introbox h1{
-	font-size: 100px;
-	padding-top:100px;
 	text-align: center;
-	color: white;
+	background-position: center center;
+	}
+
+	
+	#logo {
+	background-image: url('logo_left.png');
+	background-size: cover;
+	width: 297.5px;
+	height: 161.5px;
+	margin: 300px auto 0;
+	display: inline-block;
+	
+	}
+	#play {
+	background-image: url('logo_right.png');
+	background-size: cover;
+	width: 85px;
+	height: 98px;
+	margin-left: -85px;
+	display: inline-block;
+
+	
 }
 
 #playlistimage{
@@ -34,8 +53,9 @@ src: URL('brandon_grotesque_bold.ttf')
 
 
 #introbox h2{
-	color:red;
-	font-family:"Oswald";
+	font-size: 22px;
+	color:white;
+	font-family: 'Raleway', sans-serif;
 	text-align: center;
 }
 
@@ -49,7 +69,11 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 #signup{
-	background-color: green;
+	background-image:url('listen.jpg'); 
+	background-size: cover;
+	background-position: center center;
+	background-width:100%;
+	background-height:auto;
 	
 }
 
@@ -66,23 +90,18 @@ nav{
 	width: 100%;
 	height:70px;
 	padding:10px;
+	}
+
+		.navlogo{
+		width: 55px;
+		height: 30.16px;
+		background-image: url('logo2.png');
+		background-size: cover;
+		margin-top: 18px;
+		margin-left: 95px;
+		display: inline-block;
 }
 
-.navbutton {
-	border:none;
-	background-color: rgba(255,255,255,0);
-	color: black;	
-	font-size: 20px;
-	font-weight:bold;
-	font-family: 'Raleway', sans-serif;
-}
-
-/*button:hover{
-	color:red;
-	border-bottom:1px solid red;
-	-webkit-transition: all 400ms;
-}
-*/
 @media only screen and (max-width: 444px) {
 
 
@@ -119,131 +138,4 @@ nav{
 }
 
 
-/*------*/
 
-.cl-effect-2{
-	display: inline-block;
-	margin: 3px;
-	font-family: 'Raleway', sans-serif;
-}
-
-.cl-effect-2 a {
-	line-height: 44px;
-	color: white;
-	font-size: 13px;
-	-webkit-perspective: 1000px;
-	-moz-perspective: 1000px;
-	perspective: 1000px;
-}
-
-.cl-effect-2 a span {
-	position: relative;
-	display: inline-block;
-	padding: 0 14px;
-	background: rgba(0,0,0,0) !important;
-	-webkit-transition: -webkit-transform 0.3s;
-	-moz-transition: -moz-transform 0.3s;
-	transition: transform 0.3s;
-	-webkit-transform-origin: 50% 0;
-	-moz-transform-origin: 50% 0;
-	transform-origin: 50% 0;
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-}
-
-.csstransforms3d .cl-effect-2 a span::before {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: white;
-	color:black;
-	content: attr(data-hover);
-	-webkit-transition: background 0.3s;
-	-moz-transition: background 0.3s;
-	transition: background 0.3s;
-	-webkit-transform: rotateX(-90deg);
-	-moz-transform: rotateX(-90deg);
-	transform: rotateX(-90deg);
-	-webkit-transform-origin: 50% 0;
-	-moz-transform-origin: 50% 0;
-	transform-origin: 50% 0;
-}
-
-.cl-effect-2 a:hover span,
-.cl-effect-2 a:focus span {
-	-webkit-transform: rotateX(90deg) translateY(-22px);
-	-moz-transform: rotateX(90deg) translateY(-22px);
-	transform: rotateX(90deg) translateY(-22px);
-}
-
-.csstransforms3d .cl-effect-2 a:hover span::before,
-.csstransforms3d .cl-effect-2 a:focus span::before {
-	text-align: center;
-	background: white;	
-}
-
-
-/*LOGO*/
-.cl-effect-21{
-	display: inline-block;
-	margin: 3px;
-	font-family: 'Raleway', sans-serif;
-}
-.cl-effect-21 a {
-	padding: 10px;
-	color: #237546;
-	font-weight: 700;
-	text-shadow: none;
-	-webkit-transition: color 0.3s;
-	-moz-transition: color 0.3s;
-	transition: color 0.3s;
-}
-
-.cl-effect-21 a::before,
-.cl-effect-21 a::after {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	height: 2px;
-	background: #fff;
-	content: '';
-	opacity: 0;
-	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-	-moz-transition: opacity 0.3s, -moz-transform 0.3s;
-	transition: opacity 0.3s, transform 0.3s;
-	-webkit-transform: translateY(-10px);
-	-moz-transform: translateY(-10px);
-	transform: translateY(-10px);
-}
-
-.cl-effect-21 a::before {
-	top: 0;
-	-webkit-transform: translateY(-10px);
-	-moz-transform: translateY(-10px);
-	transform: translateY(-10px);
-}
-
-.cl-effect-21 a::after {
-	bottom: 0;
-	-webkit-transform: translateY(10px);
-	-moz-transform: translateY(10px);
-	transform: translateY(10px);
-}
-
-.cl-effect-21 a:hover,
-.cl-effect-21 a:focus {
-	color: #fff;
-}
-
-.cl-effect-21 a:hover::before,
-.cl-effect-21 a:focus::before,
-.cl-effect-21 a:hover::after,
-.cl-effect-21 a:focus::after {
-	opacity: 1;
-	-webkit-transform: translateY(0px);
-	-moz-transform: translateY(0px);
-	transform: translateY(0px);
-}
