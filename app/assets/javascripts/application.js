@@ -18,7 +18,7 @@
 
 $(document).ready(function(){
 
-	$('#introbox h1').hide().fadeIn(2000);
+	$('#introbox #play').hide().fadeIn(2000);
 	$('#introbox h2').hide().delay(700).fadeIn(2000);
 // ----------------------------------------------------
 
@@ -47,11 +47,24 @@ $(window).on('scroll', function(){
     
     });
 
-//Nav bar appear on 3rd div.
 
-
-//--------------------------------
-
+//Scroll to top div
+  $(document).ready(function(){
+    $('a[href="#introbox"]').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+      && location.hostname == this.hostname) {
+        var $target = $(this.hash);
+        $target = $target.length && $target
+        || $('[name=' + this.hash.slice(1) +']');
+        if ($target.length) {
+          var targetOffset = $target.offset().top;
+          $('html,body')
+          .animate({scrollTop: targetOffset}, 1000);
+         return false;
+        }
+      }
+    });
+  });
 
 
 
