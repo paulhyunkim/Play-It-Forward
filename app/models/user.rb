@@ -29,5 +29,9 @@ class User < ActiveRecord::Base
 	end
 	# can call .range on returned users to see distance to user
 
+	def self.search(query)
+	  where("email like ?", "%#{query}%") 
+	end
+
 
 end
