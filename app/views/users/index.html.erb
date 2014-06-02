@@ -1,7 +1,54 @@
 
+
 <h1> Hi </h1>
 
 
 <!-- <iframe src="https://embed.spotify.com/?uri=<%= @uri %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
 
-<% %>
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
+<% @songs.each do |s| %>
+	<h4><%= link_to s.artists[0].name + " - " + s.name, uri: s.uri %></h4>
+<% end %>
+
+<iframe src="https://embed.spotify.com/?uri=<%=params[:uri]%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+
+<script src="http://toma.hk/api.js?v=1"></script>
+
+<button onclick="renderTrack()">track.render()</button>
+
+<div id="controls">
+    <button onclick="track.play()">track.play()</button>
+    <button onclick="track.play(&#39;SoundCloud&#39;)">track.play('SoundCloud')</button>
+
+    <button onclick="track.pause()">track.pause()</button>
+    <button onclick="track.seek(30)">track.seek(30)</button>
+
+</div>
+<div id="log"></div>
+
+<div id="player"></div>
+
+<input id="title" value="Yelle - Que Veux Tu">
+<input id="artist" value="Madeon">
+
+<script>
+Security.allowDomain("www.rdio.com");
+var rdio : Object = null;
+loader = new Loader();
+loader.contentLoaderInfo.addEventListener(Event.INIT, function() {
+  rdio = loader.content;
+  rdio.addEventListener("rdioReady",
+    function(event : Event) : void { rdio.play("a997982"); });
+  rdio.addEventListener("playingTrackChanged", playingTrackChanged);
+});
+loader.load(new URLRequest("http://www.rdio.com/api/swf/?"+
+  'domain='+encodeURIComponent(domain)+'&'+
+  'playbackToken='+encodeURIComponent(playbackToken)));
+
+</script>

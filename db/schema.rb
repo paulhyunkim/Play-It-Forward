@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20140528013652) do
   create_table "songs", force: true do |t|
     t.string   "artist"
     t.string   "title"
-    t.string   "genre"
-    t.integer  "duration"
+    t.float    "duration"
+    t.float    "popularity"
+    t.string   "href"
     t.string   "album"
     t.integer  "user_id"
     t.integer  "playlist_id"
