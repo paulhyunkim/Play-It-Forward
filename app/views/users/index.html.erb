@@ -4,7 +4,7 @@
 <% end %>
 
 <% @songs.each do |s| %>
-	<h4><%= link_to s.artists[0].name + " - " + s.name, uri: s.uri %></h4>
+  <h4><%= link_to s.artists[0].name + " - " + s.name, uri: s.uri %></h4>
 <% end %>
 
 <iframe src="https://embed.spotify.com/?uri=<%=params[:uri]%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
