@@ -503,7 +503,7 @@
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: normal;
-// $form-label-line-height: 1.5;
+$form-label-line-height: 1.5;
 // $form-label-font-color: scale-color(#000, $lightness: 30%);
 // $form-label-small-transform: capitalize;
 // $form-label-bottom-margin: 0;
@@ -523,7 +523,7 @@
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
-// $fieldset-border-width: 1px;
+$fieldset-border-width: 3px;
 // $fieldset-border-color: #ddd;
 // $fieldset-padding: rem-calc(20);
 // $fieldset-margin: rem-calc(18 0);
