@@ -6,8 +6,20 @@ font-family:'Brandon Grotesque Bold';
 src: URL('brandon_grotesque_bold.ttf')
 }
 
+.myformcontrol {
+	height: 50px !important;
+	font-size: 30px !important;
+}
 
+#user_gender{
+	height:50px;
+	margin-bottom: 5px;
+	font-size:20px;
+}
 
+#formbox{
+	margin:50px auto;
+}
 .sectionbox {
 	padding:100px;
 	height:710px;
@@ -16,6 +28,7 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 #introbox {
+	background-color: white;	
 	background-image: url('ddrive.jpg');
 	background-size: cover;
 }
@@ -247,3 +260,6 @@ nav{
 	-moz-transform: translateY(0px);
 	transform: translateY(0px);
 }
+
+
+
