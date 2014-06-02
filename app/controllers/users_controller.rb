@@ -3,8 +3,15 @@ class UsersController < ApplicationController
 
 
 	def index
-			@uri = "spotify:artist:4phGZZrJZRo4ElhRtViYdl"
-			@users = Users.all
+	  if params[:search]
+	    @songs = MetaSpotify::Track.search(params[:search])[:tracks][0,10]
+	  else
+	    @songs = MetaSpotify::Track.search("bump n grind")[:tracks][0,10]
+	  end
+	end
+
+	def show
+		@uri = "spotify:track:1ZA8L9IOkRhmmz4nPXXx7h"
 	end
 
 
@@ -12,14 +19,7 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
-	def show
-		@user = User.find(params[:id])
-	  if params[:search]
-	    @songs = MetaSpotify::Track.search(params[:search])[:tracks][0,10]
-	  else
-	    @songs = MetaSpotify::Track.search("bump n grind")[:tracks][0,10]
-	  end
-	end
+	
 
 	def show
 		@uri = "spotify:track:1ZA8L9IOkRhmmz4nPXXx7h"

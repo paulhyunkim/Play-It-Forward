@@ -1,18 +1,10 @@
-
-
-<h1> Hi </h1>
-
-
-<!-- <iframe src="https://embed.spotify.com/?uri=<%= @uri %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
-
 <%= form_tag(users_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-
 <% @songs.each do |s| %>
-	<h4><%= link_to s.artists[0].name + " - " + s.name, uri: s.uri %></h4>
+  <h4><%= link_to s.artists[0].name + " - " + s.name, uri: s.uri %></h4>
 <% end %>
 
 <iframe src="https://embed.spotify.com/?uri=<%=params[:uri]%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>

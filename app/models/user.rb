@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 	#before_save downcase username & email
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 	validates :age,  numericality: { only_integer: true, greater_than: 13, less_than: 120 }
-	
+
 	has_secure_password
 	has_many :playlists
 	has_many :songs
@@ -29,9 +29,7 @@ class User < ActiveRecord::Base
 	end
 	# can call .range on returned users to see distance to user
 
-
 	def self.search(query)
 	  where("email like ?", "%#{query}%") 
 	end
-
 end
