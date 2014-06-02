@@ -1,12 +1,13 @@
+
+
 class UsersController < ApplicationController
 
-
-
 	def index
+		client = RdioApi.new(:consumer_key => "px6jnus8n8e94qg7u9fbhpsc", :consumer_secret => "qJzVAj7PxJ")
 	  if params[:search]
-	    @songs = MetaSpotify::Track.search(params[:search])[:tracks][0,10]
+	    @songs = client.search(:query => params[:search], :types => "track", count: 10).results
 	  else
-	    @songs = MetaSpotify::Track.search("bump n grind")[:tracks][0,10]
+	    @songs = []
 	  end
 	end
 
