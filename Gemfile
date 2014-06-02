@@ -10,7 +10,7 @@ gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'meta-spotify'
-
+gem 'rdio_api'
 
 gem 'foundation-rails'
 
