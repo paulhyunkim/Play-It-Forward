@@ -3,10 +3,11 @@ class CreateSongs < ActiveRecord::Migration
     create_table :songs do |t|
       t.string :artist
       t.string :title
-      t.float :duration
-      t.float :popularity
-      t.string :href
+      t.integer :duration
+      t.string :key
       t.string :album
+      t.boolean :is_explicit
+      t.string :image_url
       t.references :user, index: true
       t.references :playlist, index: true
 
