@@ -80,6 +80,25 @@
 
 
 
+<h1> Songs </h1>
+
+<div id="songs-destination"></div>
+
+<ul>
+  <script id="songs-template" type="text/x-handlebars-template">
+    {{#each songs}}
+      <li>
+        #{{id}}: <br /> 
+        Title:{{title}} <br /> 
+        Artist:{{artist}} <br />
+      </li>
+    {{/each}}
+  </script>
+</ul>
+
+
+
+
 
 <!-- <iframe src="https://embed.spotify.com/?uri=<%=params[:uri]%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
