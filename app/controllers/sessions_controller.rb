@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		@user = User.where(:email =>params[:session][:email]).first
+		@user = User.where(:email => params[:session][:email]).first
 
 		if @user == nil || !@user.authenticate(params[:session][:password])
 			flash.now[:error] = "Invalid email and password combination!"
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 			session[:remember_token] = @user.id
 			@current_user = @user
 			flash.now[:success] = "You have LOGGED IN successfully!"
-			redirect_to root_path
+			redirect_to users_path
 		end
 	end
 
@@ -22,3 +22,4 @@ class SessionsController < ApplicationController
 		redirect_to new_sessions_path
 	end
 end
+

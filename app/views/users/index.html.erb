@@ -4,7 +4,7 @@
 <% end %>
 
 <% @songs.each do |s| %>
-  <h4><%= link_to s.artist + " - " + s.name, user_songs_path(song: {artist: s.artist, title: s.name, key: s["key"], album: s.album, duration: s.duration, is_explicit: s.isExplicit, image_url: s.icon400 }), :method => :post %></h4>
+  <h4><%= link_to s.artist + " - " + s.name, songs_path(song: {artist: s.artist, title: s.name, key: s["key"], album: s.album, duration: s.duration, is_explicit: s.isExplicit, image_url: s.icon400 }), :method => :post %></h4>
 <% end %>
 
 
@@ -91,6 +91,7 @@
         #{{id}}: <br /> 
         Title:{{title}} <br /> 
         Artist:{{artist}} <br />
+        Key:{{key}} <br />
       </li>
     {{/each}}
   </script>

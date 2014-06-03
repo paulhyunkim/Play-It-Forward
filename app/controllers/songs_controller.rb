@@ -4,7 +4,11 @@ class SongsController < ApplicationController
 	respond_to :html, :json
 
 	def index
-	    @songs = current_user.songs.all
+	    # @nearby_users = current_user.nearby(5)
+	    # @songs = Song.where(:user_id => @nearby_users.map(&:id))
+	    @current_user_songs = current_user.songs.all
+	    @songs = Song.all
+	    # @songs = current_user.songs.all
 	    respond_with @songs
     end
 
@@ -16,18 +20,17 @@ class SongsController < ApplicationController
 		@song = current_user.songs.new(song_params)
 		if @song.save
 			respond_to do |format|
-			 format.html {redirect_to users_path}
-			 format.json {render json: @song, status: :created}
-			 flash[:success] = "You have added a song to your playlist."
+				format.html {redirect_to users_path}
+				format.json {render json: @song, status: :created}
+				flash[:success] = "You have added a song to your playlist."
 			end
 		else
-		
-		respond_to do |format|
-			 format.html {render 'new'}
-			 format.json { render json: @song.errors, status: :unprocessable_entity}	
-		   	 flash[:error] = "Could not add song to your playlist. Try again."
-			 redirect_to new_user_path
-		    end
+			respond_to do |format|
+				format.html {render 'new'}
+				format.json { render json: @song.errors, status: :unprocessable_entity}	
+				flash[:error] = "Could not add song to your playlist. Try again."
+				redirect_to new_user_path
+			end
 		end
 	end
 
