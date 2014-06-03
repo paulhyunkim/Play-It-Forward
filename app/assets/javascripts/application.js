@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars
 //= require foundation
-//= require bootstrap
 //= require_tree .
 
 $(document).ready(function(){
