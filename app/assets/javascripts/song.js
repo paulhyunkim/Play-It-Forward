@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 	$("#songs-destination").each(function() {
 
