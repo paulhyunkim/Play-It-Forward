@@ -4,8 +4,10 @@
 <% end %>
 
 <% @songs.each do |s| %>
-  <h4><%= link_to s.artist + " - " + s.name, key: s["key"] %></h4>
+  <h4><%= link_to s.artist + " - " + s.name, songs_path(song: {artist: s.artist, title: s.name, href: s["key"]}), :method => :post %></h4>
 <% end %>
+
+
 
 
 

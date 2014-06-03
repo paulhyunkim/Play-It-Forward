@@ -13,7 +13,7 @@ class SongsController < ApplicationController
 		@song = Song.new(song_params)
 		if @song.save
 			flash[:success] = "You have added a song to your playlist."
-			redirect_to root_path
+			redirect_to users_path
 		else
 			flash[:error] = "Could not add song to your playlist. Try again."
 			redirect_to new_user_path
