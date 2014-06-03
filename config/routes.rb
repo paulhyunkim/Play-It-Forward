@@ -1,8 +1,9 @@
 PlayItForward::Application.routes.draw do
 
   root 'static_pages#home'
-  resources :users
-  resources :songs
+  resources :users do
+    resources :songs
+  end
   resource :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

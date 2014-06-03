@@ -23,7 +23,12 @@ class UsersController < ApplicationController
 	
 
 	def show
-		@uri = "spotify:track:1ZA8L9IOkRhmmz4nPXXx7h"
+		client = RdioApi.new(:consumer_key => "px6jnus8n8e94qg7u9fbhpsc", :consumer_secret => "qJzVAj7PxJ")
+	  	if params[:search]
+	    	@songs = client.search(:query => params[:search], :types => "track", count: 10).results
+	  	else
+	    	@songs = []
+	  	end
 	end
 
 	def create
@@ -31,8 +36,9 @@ class UsersController < ApplicationController
 		if @user.save
 			# session[:remember_token] = @user.id
 			# @current_user = @user
-			# flash.now[:success] = "You have succesfully signed up!"
-			redirect_to new_sessions_path
+			session[:remember_token] = @user.id.to_s
+			flash.now[:success] = "You have succesfully signed up!"
+			redirect_to user_path(current_user)
 		else
 			render 'new'
 		end

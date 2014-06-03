@@ -1,28 +1,19 @@
 class SongsController < ApplicationController
 	before_action :set_song, :only => [:show, :edit, :update, :destroy]
-
+	before_action :authenticate_user
 	respond_to :html, :json
 
 	def index
-	    @songs = Song.all
+	    @songs = current_user.songs.all
 	    respond_with @songs
     end
 
 	def new
-		@song = Song.new
+		@song = current_user.songs.new
 	end
-
-	def show
-    	respond_with @song
-  	end
-
-	def search(search_term)
-		@results = MetaSpotify::Track.search(search_term)
-	end
-
 
 	def create
-		@song = Song.new(song_params)
+		@song = current_user.songs.new(song_params)
 		if @song.save
 			respond_to do |format|
 			 format.html {redirect_to users_path}
@@ -42,7 +33,7 @@ class SongsController < ApplicationController
 
 	private
 
- 	 def set_song
+ 	def set_song
    		 @song = Song.find(params[:id])
   	end
 
