@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require handlebars
+//= require angular
+//= require angular-resource
 //= require foundation
 //= require_tree .
 

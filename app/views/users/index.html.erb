@@ -1,11 +1,35 @@
-<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
+<div x-ng-app="user_app">
+<div x-ng-controller="UserCtrl" class="row">
 
-<% @songs.each do |s| %>
-  <h4><%= link_to s.artist + " - " + s.name, songs_path(song: {artist: s.artist, title: s.name, key: s["key"], album: s.album, duration: s.duration, is_explicit: s.isExplicit, image_url: s.icon400 }), :method => :post %></h4>
-<% end %>
+<%#= form_tag(users_path, :method => "get", id: "search-form") do %>
+  <%#= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+  <%#= submit_tag "Search", :name => nil %>
+<%# end %>
+
+<input type="text" ng-model="searchTerm">
+<button ng-click="search(searchTerm)">Search Song</button>
+
+<p>logged in as <%= @current_user.username %></p>
+
+
+<!-- <ul>
+  <li x-ng-repeat="s in userSongs">
+    {{s.artist}} - {{s.title}} - {{s.key}} <a ng-click="deleteSong(s)">Delete</a>
+  </li>
+</ul> -->
+
+<ul>
+  <li x-ng-repeat="s in userSongs">
+    {{s.artist}} - {{s.title}} - {{s.key}} <a ng-click="playSong(s.key);">Play</a> <a ng-click="deleteSong(s)">Delete</a>
+  </li>
+</ul>
+   <br>
+<ul>
+  <li x-ng-repeat="s in searchSongs">
+    {{s.artist}} - {{s.name}} - {{s.key}} <a ng-click="playSong(s.key);">Play</a> <a ng-click="deleteSong(s)">Delete</a> <a ng-click="saveSong(s)">Add to Playlist</a>
+  </li>
+</ul>
+
 
 
 
@@ -13,8 +37,8 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<!--   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
 
 
 
@@ -33,7 +57,7 @@
         <div class="row" style="margin-bottom: 10px;">
           <div class="col-md-2">Enter Album Key</div>
           <div class="col-md-10">
-            <input id="play_key" class="form-control" value="<%=params[:key]%>">
+            <input id="play_key" class="form-control" value="t10597075">
           </div>
         </div>
         <div class="row">
@@ -69,6 +93,7 @@
         </div>
         <div class="col-md-6">
           <h3 id="album"></h3>
+          <h4>Remaining <p id="remaining"></p></h4>
           <h4>Playstate <p id="playState"></p></h4>
           <h4>Position <p id="position"></p></h4>
         </div>
@@ -84,6 +109,11 @@
 
 <div id="songs-destination"></div>
 
+
+</div>
+</div>
+
+<!-- 
 <ul>
   <script id="songs-template" type="text/x-handlebars-template">
     {{#each songs}}
@@ -98,7 +128,7 @@
 </ul>
 
 
-
+ -->
 
 
 <!-- <iframe src="https://embed.spotify.com/?uri=<%=params[:uri]%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>

@@ -1,25 +1,3 @@
-/*
-Copyright (c) 2011 Rdio Inc
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
- */
-
 // a global variable that will hold a reference to the api swf once it has loaded
 var apiswf = null;
 
@@ -47,6 +25,8 @@ $(document).ready(function() {
   $('#pause').click(function() { apiswf.rdio_pause(); });
   $('#previous').click(function() { apiswf.rdio_previous(); });
   $('#next').click(function() { apiswf.rdio_next(); });
+
+
 });
 
 
@@ -78,6 +58,9 @@ callback_object.ready = function ready(user) {
   }
 
   console.log(user);
+
+  // autoplay on load
+  // apiswf.rdio_play($('#play_key').val());
 }
 
 callback_object.freeRemainingChanged = function freeRemainingChanged(remaining) {
@@ -99,6 +82,10 @@ callback_object.playingTrackChanged = function playingTrackChanged(playingTrack,
     $('#artist').text(playingTrack['artist']);
     $('#art').attr('src', playingTrack['icon']);
   }
+
+  console.log("track changed");
+  // HAVE IT LOAD THE RANDOMIZER AND ADD TO PLAYLIST
+  apiswf.rdio_queue("t32819047");
 }
 
 callback_object.playingSourceChanged = function playingSourceChanged(playingSource) {

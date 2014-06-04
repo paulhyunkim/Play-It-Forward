@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user, :except => [:new, :create]
+	respond_to :json, :html
 
 	def index
 		client = RdioApi.new(:consumer_key => "px6jnus8n8e94qg7u9fbhpsc", :consumer_secret => "qJzVAj7PxJ")
@@ -8,6 +9,8 @@ class UsersController < ApplicationController
 	  else
 	    @songs = []
 	  end
+
+	  respond_with @songs
 	end
 
 	def show
