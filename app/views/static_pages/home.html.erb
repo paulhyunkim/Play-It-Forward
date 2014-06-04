@@ -1,25 +1,24 @@
-
-
 <div id ="container">
 	<nav class="nav">
 		<a href="#introbox"><div class="navlogo"></div></a>
 
-		<div class="cl-effect-13">
-		<a href="#" class="cl-effect-13">LOG IN</a>
-		<a href="#signup" class="cl-effect-13">SIGN UP</a>
-		<a href="#whoarewe" class="cl-effect-13">HOW IT WORKS</a>
-		<%= link_to "Sign Out", signout_path, method: "delete" %>
-	 	</div>
+	<div class="cl-effect-13">
+		<% if !current_user %>
+			<%= link_to "LOG IN", new_sessions_path, class: "cl-effect-13" %>
+			<a href="#signup" class="cl-effect-13">SIGN UP</a>
+			<a href="#whoarewe" class="cl-effect-13">HOW IT WORKS</a>
+		<% else %>
+			<%= link_to "Sign Out", signout_path, method: "delete" %>
+	 	<% end %>
+	 </div>
 		
 	</nav>
 
 	<div class="sectionbox" id ="introbox">
-		
-		<div class="mainlogo" id="logo"></div>
+		<div class="mainlogo">Play It</div>
 		<div class="mainlogo" id="play"></div>
 		<br />
 		<h2>W h a t ' s &nbsp o n &nbsp y o u r &nbsp p l a y l i s t ? </h2>
-		
 	</div>
 
 	<div class = "sectionbox" id="whoarewe">
