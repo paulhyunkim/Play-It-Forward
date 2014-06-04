@@ -1,3 +1,91 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.userbody {
+	height:720px;
+	width:100%;
+	background-image: url('index_bg.jpg');
+	background-size:cover;
+	background-position: center center;
+	padding-top:10px;
+}
+
+
+#usernavbar{
+	height:80px;
+	font-family: 'Raleway', sans-serif;
+	background-color:rgba(255,255,255,0.3);
+	width:100%;
+	padding:25px;
+	}
+
+#usernavbar div {
+	display: inline-block;
+	font-size: 20px;
+	margin-right: 20px;
+}
+
+#navlogo{
+	background-image:url('playitforward.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height:50px;
+	width:300px;
+	}
+
+#heartsongs, #logout {
+	float:right;
+}
+
+.bodybox{
+	height:580px;
+	margin:20px;
+}
+
+.maincontent{
+	background-color: rgba(0,0,51,0.2);
+	font-family:'Raleway', sans-serif;
+	height:520px;
+	padding:25px 20px 20px 20px;
+	color:white;	
+}
+
+
+.bigtitle{
+	color:white;
+	font-size: 25px;
+}
+
+
+#mysongs {
+	background-color: rgba(255,255,255,0.3);
+	overflow-y:scroll;
+	height:390px;
+	padding:20px;
+}
+
+.albumphoto {
+	text-align: center;
+}
+
+.testplayer{
+	font-size: 35px;
+	display:inline-block;
+	text-align: center;
+	padding:5px;
+	width:100%;
+	margin-bottom: 50px;
+}
+
+.testplayer div{
+	width:26%;
+	display:inline;
+}
+
+.songproperties img {
+	float:right;
+}
+.songproperties{
+	font-size: 25px;
+}
