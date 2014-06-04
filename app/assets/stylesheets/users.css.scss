@@ -54,7 +54,7 @@
 
 .bigtitle{
 	color:white;
-	font-size: 30px;
+	font-size: 25px;
 }
 
 
@@ -69,5 +69,25 @@
 	text-align: center;
 }
 
+.testplayer{
+	font-size: 35px;
+	display:inline-block;
+	text-align: center;
+	padding:5px;
+	width:100%;
+	margin-bottom: 50px;
+}
+
+.testplayer div{
+	width:26%;
+	display:inline;
+}
+
+.songproperties img {
+	float:right;
+}
+.songproperties{
+	font-size: 25px;
+}
 
 
