@@ -1,5 +1,13 @@
-
+var userLat = null;
+var userLng = null;
 var playlistSongs = [];
+// set user coordinates upon page load
+navigator.geolocation.getCurrentPosition(function(position) { 
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude; 
+    console.log(userLat);
+    console.log(userLng);
+  });
 
 var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {

@@ -98,6 +98,16 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
   apiswf.rdio_queue(nextSong.key);
   console.log(nextSong.title);
   lastSong = nextSong;
+
+  // update user coordinates which each song
+  navigator.geolocation.getCurrentPosition(function(position) { 
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude; 
+    console.log(userLat);
+    console.log(userLng);
+  });
+
+
 }
 
 callback_object.volumeChanged = function volumeChanged(volume) {
