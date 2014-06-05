@@ -1,3 +1,5 @@
+var playlistSongs = [];
+
 var userApp = angular.module('user_app', ['ngResource']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
@@ -10,20 +12,24 @@ var userApp = angular.module('user_app', ['ngResource']).config(
 }]);
 
 userApp.factory('UserSong', ['$resource', function($resource) {
-  console.log("in the factory");
   return $resource('/songs/:id',
     {id: '@id'},
     {update: { method: 'PATCH'}});
     }]);
 
 userApp.factory('SearchSong', ['$resource', function($resource) {
-  console.log("in the factory");
   return $resource('/users/:id',
     {id: '@id'},
     {update: { method: 'PATCH'}});
     }]);
 
-userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(UserSong, SearchSong, $scope) {
+userApp.factory('PlaylistSong', ['$resource', function($resource) {
+  return $resource('/playlists/:id',
+    {id: '@id'},
+    {update: { method: 'PATCH'}});
+    }]);
+
+userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scope', function(UserSong, SearchSong, PlaylistSong, $scope) {
 
     // load user's songs on page upon load
     $scope.userSongs = [];
@@ -32,6 +38,15 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(Use
       console.log($scope.userSongs);
     });
     $scope.newUserSong = new UserSong();
+
+    // load playlist songs on page upon load
+    $scope.playlistSongs = [];
+    PlaylistSong.query(function(songs) {
+      $scope.playlistSongs = songs;
+      playlistSongs = songs;
+      console.log($scope.playlistSongs);
+    });
+    $scope.newPlaylistSong = new PlaylistSong();
 
     // initialize searchSongs as empty list
     $scope.searchSongs = [];

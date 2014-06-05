@@ -3,6 +3,7 @@ PlayItForward::Application.routes.draw do
   root 'static_pages#home'
   resources :users 
   resources :songs
+  resources :playlists
 
 
   resource :sessions, only: [:new, :create, :destroy]
