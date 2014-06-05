@@ -34,27 +34,21 @@
       <li>
         <div class = "maincontent" id ="playerbody"><h1 class="bigtitle">Now Playing: </h1>
           <br />
-          <div class = "albumphoto"> <img src="" id="art" class="albumArt">
-          </div>
+
+
+
+          
+            <div class = "albumphoto">
+              <img src="" id="art" class="albumArt">
+            </div>
+
           <div class="testplayer">
-
-            <button ng-click="notClicked = true" id="play" class="btn btn-default">play</button>
-              <span ng-if="notClicked" class="blankbox"></span>
-
+            <button id="play" class="btn btn-default">play</button>
             <button id="pause" class="btn btn-default"><i class="fa fa-pause"></i> Pause</button>
-
             <button id="next" class="btn btn-default"><i class="fa fa-step-forward"></i> Next</button>
-
-
-
-
-
-
-<!-- 
-              <div>1:30 </div> &nbsp;&nbsp;&nbsp;
-              <div>ll</div>&nbsp;&nbsp;&nbsp;
-              <div>FWD</div>&nbsp;&nbsp;&nbsp; -->
           </div>
+
+
           <div class="songproperties">
             <%= image_tag 'heart.png' %>
           <p><span id="artist"></span></p><br />

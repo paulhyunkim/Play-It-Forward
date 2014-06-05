@@ -138,14 +138,6 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
       });
     }
 
-
-    $scope.isPlayerLoaded = function(){
-      $scope.isPlayerLoaded = isPlayerLoaded;
-      console.log(isPlayerLoaded);
-    }
-
-
-
 }])
 
 

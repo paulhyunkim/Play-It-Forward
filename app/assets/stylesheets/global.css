@@ -24,6 +24,8 @@
 
 /* line 22, global.scss */
 .albumArt {
+  width:206px;
+  height:206px;
   border-radius: 50%;
   border: 3px solid #ccc;
 }
