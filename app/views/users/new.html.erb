@@ -14,16 +14,16 @@
     <% end %>
 
 <div class = "large-6 medium-7 small-7" id ="formbox">
-	<%= u.text_field :username, maxlength: 15, placeholder: "Enter a username with at least 4 characters", class: "myformcontrol" %>
-	<%= u.password_field :password, maxlength: 15, placeholder: "Enter a password with at least 8 characters", class: "myformcontrol" %>
-	<%= u.password_field :password_confirmation, maxlength: 15, placeholder: "Confirm password", class: "myformcontrol" %>
-	<%= u.text_field :email, placeholder: "Enter a valid email", class: "myformcontrol" %>
-	<%= u.text_field :age, maxlength: 2, placeholder: "How young are you?", class: "myformcontrol" %>
+	<%= u.text_field :username, maxlength: 15, placeholder: "Username (at least 4 characters)", class: "myformcontrol" %>
+	<%= u.password_field :password, maxlength: 15, placeholder: "Password (at least 8 characters)", class: "myformcontrol" %>
+	<%= u.password_field :password_confirmation, maxlength: 15, placeholder: "Re-enter password", class: "myformcontrol" %>
+	<%= u.text_field :email, placeholder: "Email", class: "myformcontrol" %>
+	<%= u.text_field :age, maxlength: 2, placeholder: "Age", class: "myformcontrol" %>
 	<%= u.select :gender, [["Select Gender", "Select Gender"],["Male", "Male"],["Female","Female"],["Other", "Other"]] %>
-	<%= u.text_field :city, placeholder: "Enter a City", class: "myformcontrol" %>
-	<%= u.text_field :state, placeholder: "Enter a State", class: "myformcontrol" %>
+	<%= u.text_field :city, placeholder: "City", class: "myformcontrol" %>
+	<%= u.text_field :state, placeholder: "State", class: "myformcontrol" %>
 
-	<%= u.submit "Create Profile!" %>
+	<%= u.submit "Create Account!", class: "buttonsignup" %>
 <% end %>
 </div>
 

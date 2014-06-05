@@ -1,3 +1,6 @@
+
+var playlistSongs = [];
+
 var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
@@ -11,8 +14,10 @@ var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config
 
 
 // CITY name generator
+// added the reverse Geocode directive for Angular
+
 userApp.directive('reverseGeocode', function () {
-        console.log('reverseGeocode');
+
         return {
             restrict: 'E',
             template: '<div></div>',
@@ -34,23 +39,28 @@ userApp.directive('reverseGeocode', function () {
             replace: true
         }
     });
-//END OF CITY generator
+// end of geocode
 
 userApp.factory('UserSong', ['$resource', function($resource) {
-  console.log("in the factory");
   return $resource('/songs/:id',
     {id: '@id'},
     {update: { method: 'PATCH'}});
     }]);
 
 userApp.factory('SearchSong', ['$resource', function($resource) {
-  console.log("in the factory");
   return $resource('/users/:id',
     {id: '@id'},
     {update: { method: 'PATCH'}});
     }]);
 
-userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(UserSong, SearchSong, $scope) {
+userApp.factory('PlaylistSong', ['$resource', function($resource) {
+  return $resource('/playlists/:id',
+    {id: '@id'},
+    {update: { method: 'PATCH'}});
+    }]);
+
+
+userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scope', function(UserSong, SearchSong, PlaylistSong, $scope) {
 
     // load user's songs on page upon load
     $scope.userSongs = [];
@@ -63,6 +73,15 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(Use
     });
     $scope.newUserSong = new UserSong();
 
+    // load playlist songs on page upon load
+    $scope.playlistSongs = [];
+    PlaylistSong.query(function(songs) {
+      $scope.playlistSongs = songs;
+      playlistSongs = songs;
+      console.log($scope.playlistSongs);
+    });
+    $scope.newPlaylistSong = new PlaylistSong();
+
     // initialize searchSongs as empty list
     $scope.searchSongs = [];
 
@@ -73,7 +92,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(Use
         console.log($scope.searchSongs);
       });
     }
-    $scope.newSearchSong = new SearchSong();
+    $scope.newSearchSong = new SearchSong();  
 
 
     $scope.playSong = function(key) {
