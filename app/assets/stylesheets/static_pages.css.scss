@@ -5,22 +5,28 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 .myformcontrol{
-	width: 450px !important;
-	height: 50px !important;
+	width: 400px !important;
+	height: 35px !important;
 	border-radius: 10px !important;
-	font-size: 20px !important;
+	font-size: 15px !important;
 	font-family: 'Raleway', sans-serif !important;
 }
 
 #user_gender{
 	margin-bottom: 10px;
-	width: 450px !important;
-	height: 50px !important;
+	width: 400px !important;
+	height: 35px !important;
 	border-radius: 10px !important;
-	font-size: 20px !important;
+	font-size: 15px !important;
 	font-family: 'Raleway', sans-serif !important;
 }
 
+#myModal{
+	background-color: rgba(0,0,0,0.30);
+	width: 600px;
+	height: 570px;
+	
+}
 #formbox{
 	margin:50px auto;
 }

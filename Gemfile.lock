@@ -55,7 +55,6 @@ GEM
     foundation-rails (5.2.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    geocoder (1.2.1)
     hashie (1.2.0)
     hike (1.2.3)
     httparty (0.13.1)
@@ -164,7 +163,6 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.1.0)
   coffee-rails (~> 4.0.0)
   foundation-rails
-  geocoder
   jquery-rails
   meta-spotify
   pg
