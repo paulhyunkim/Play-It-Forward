@@ -10,59 +10,49 @@
     <ul class = "large-block-grid-3 small-block-grid-1">
       <li>
         <div class = "maincontent" id ="profilebody">
-          <h1 class ="bigtitle">Hello, Dinna!</h1>
-            24.F     Cerritos. CA, USA
-          <h1 class = "bigtitle">MY SONGS</h1>
-          <div id = "mysongs">
-              - La La La <br />
-              Naughty Boy ft. Sam Smith <br />
-                   <br />
-              - Beneathe Your Beantif... <br />
-              Labrinth ft. Emeli Sand <br />
-                                          <br />
-              -For the First Time in Fo... <br />
-              Kirsten Bell <br />
-                                          <br />
-              - All of Me <br />
-              John Legend <br />
-                                         <br />
-              - Latch <br />
-              Disclosure ft. Sam Smith <br />
+          <h1 class ="bigtitle">Hello, <%= @current_user.username %>!</h1>
+          <%= @current_user.age %>, 
+          <%= @current_user.gender %> &nbsp;&nbsp;&nbsp;
+          <%= @current_user.city %>,
+          <%= @current_user.state %>           
 
-                            - La La La <br />
-              Naughty Boy ft. Sam Smith <br />
-                   <br />
-              - Beneathe Your Beantif... <br />
-              Labrinth ft. Emeli Sand <br />
-                                          <br />
-              -For the First Time in Fo... <br />
-              Kirsten Bell <br />
-                                          <br />
-              - All of Me <br />
-              John Legend <br />
-                                         <br />
-              - Latch <br />
-              Disclosure ft. Sam Smith <br />
-                                        
+            <br /><br /><br />
+          <h1 class = "bigtitle" id = "mysongbigtitle">MY SONGS:</h1><br />
+          <div id = "mysongs">
+
+            <ul>
+              <li x-ng-repeat="s in userSongs">
+                {{s.artist}} <br/> {{s.title}}  <a ng-click="playSong(s.key);">Play</a>  <a ng-click="deleteSong(s)">Delete</a>
+              </li>
+            </ul>
+
               + ADD NEW SONG
           </div>
       </div>
       </li>
 
       <li>
-        <div class = "maincontent" id ="playerbody"><h1 class="bigtitle">Now Playing </h1>
+        <div class = "maincontent" id ="playerbody"><h1 class="bigtitle">Now Playing: </h1>
           <br />
-          <div class = "albumphoto"> <%= image_tag 'zedd.jpg', height: 00, width: 200 %>
-          </div>
+
+
+
+          
+            <div class = "albumphoto">
+              <img src="" id="art" class="albumArt">
+            </div>
+
           <div class="testplayer">
-              <div>1:30 </div> &nbsp;&nbsp;&nbsp;
-              <div>ll</div>&nbsp;&nbsp;&nbsp;
-              <div>FWD</div>&nbsp;&nbsp;&nbsp;
+            <button id="play" class="btn btn-default">play</button>
+            <button id="pause" class="btn btn-default"><i class="fa fa-pause"></i> Pause</button>
+            <button id="next" class="btn btn-default"><i class="fa fa-step-forward"></i> Next</button>
           </div>
+
+
           <div class="songproperties">
             <%= image_tag 'heart.png' %>
-          <p>Find You </p><br />
-          <p>By: Zedd</p>
+          <p><span id="artist"></span></p><br />
+          <p><span id="track"></span> </p>
         </div>
         </div>
       </li>
@@ -77,11 +67,11 @@
 
           <button></button>
 
-          <input type="text" value="34.013678999999996" ng-model="lat"> <input type="text" value="-118.49610919999999" ng-model="lng">
+       <!--    <input type="text" value="34.013678999999996" ng-model="lat"> <input type="text" value="-118.49610919999999" ng-model="lng">
           <p>{{lat}}, {{lng}}</p>
 
             <reverse-geocode lat="{{lat}}" lng="{{lng}}" />
-
+ -->
 
 
         </div>
@@ -104,21 +94,13 @@
 
 <input type="text" ng-model="searchTerm">
 <button ng-click="search(searchTerm)">Search Song</button>
-
-<p>logged in as <%= @current_user.username %></p>
-
-
 <!-- <ul>
   <li x-ng-repeat="s in userSongs">
     {{s.artist}} - {{s.title}} - {{s.key}} <a ng-click="deleteSong(s)">Delete</a>
   </li>
 </ul> -->
 
-<ul>
-  <li x-ng-repeat="s in userSongs">
-    {{s.artist}} - {{s.title}} - {{s.key}} <a ng-click="playSong(s.key);">Play</a> <a ng-click="deleteSong(s)">Delete</a>
-  </li>
-</ul>
+
    <br>
 <ul>
   <li x-ng-repeat="s in searchSongs">
@@ -132,7 +114,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
 
 
-  <div class="container">
+  <div class="container" id="trialplayer">
 
     <div id="upsell" class="alert alert-info alert-dismissable">
       <div id="subscriber">You are an Rdio subscriber. You're awesome.</div>
@@ -175,11 +157,14 @@
           </div>
         </div>
       </div>
-      <div class="row well">
+
+     <!--  <div class="row well">
         <div class="artistAlbumInfo well col-md-6 ">
           <h3><span id="artist"></span> - <span id="track"></span></h3>
           <img src="" id="art" class="albumArt">
-        </div>
+        </div> -->
+
+
         <div class="col-md-6">
           <h3 id="album"></h3>
           <h4>Remaining <p id="remaining"></p></h4>

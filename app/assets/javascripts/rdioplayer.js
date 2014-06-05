@@ -1,6 +1,8 @@
 // a global variable that will hold a reference to the api swf once it has loaded
 var apiswf = null;
 var lastSong = null;
+var isPlayerLoaded = false;
+console.log(isPlayerLoaded);
 
 $(document).ready(function() {
   // on page load use SWFObject to load the API swf into div#apiswf
@@ -26,9 +28,9 @@ $(document).ready(function() {
   $('#pause').click(function() { apiswf.rdio_pause(); });
   $('#previous').click(function() { apiswf.rdio_previous(); });
   $('#next').click(function() { apiswf.rdio_next(); });
-
-
 });
+// Set a starter image
+$('#art').attr('src', 'assets/albumdefault.png');
 
 
 // the global callback object
@@ -77,11 +79,14 @@ callback_object.playStateChanged = function playStateChanged(playState) {
 callback_object.playingTrackChanged = function playingTrackChanged(playingTrack, sourcePosition) {
   // The currently playing track has changed.
   // Track metadata is provided as playingTrack and the position within the playing source as sourcePosition.
+
   if (playingTrack != null) {
     $('#track').text(playingTrack['name']);
     $('#album').text(playingTrack['album']);
     $('#artist').text(playingTrack['artist']);
     $('#art').attr('src', playingTrack['icon']);
+  } else {
+    $('#art').attr('src', 'assets/heart.png');
   }
 }
 
