@@ -1,4 +1,5 @@
 class UsersongsController < ApplicationController
+	before_action :set_song, :only => [:edit, :update, :destroy]
 	before_action :authenticate_user
 	respond_to :html, :json
 
@@ -26,6 +27,7 @@ class UsersongsController < ApplicationController
 	end
 
 	def create
+		p "attempting save"
 		@song = current_user.songs.new(song_params)
 		if @song.save
 			respond_to do |format|
@@ -60,7 +62,7 @@ class UsersongsController < ApplicationController
   	end
 
 	def song_params
-		params.require(:song).permit(:title, :artist, :album, :duration, :is_explicit, :key, :image_url)
+		params.require(:usersong).permit(:title, :artist, :album, :duration, :is_explicit, :key, :image_url)
 	end
 
 end

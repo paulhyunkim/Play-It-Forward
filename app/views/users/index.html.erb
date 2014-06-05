@@ -1,8 +1,8 @@
 
-<div x-ng-app="user_app">
+<div x-ng-app="user_app" class= "userbody">
 <div x-ng-controller="UserCtrl">
 
-<div class= "userbody" x-ng-app="user_app">
+<div  x-ng-app="user_app">
 
 <%= render "users/nav_bar" %>
 
@@ -112,14 +112,9 @@
       </div>
     </div>
 
-
-
-
-
-
-
     <ol><br/><br/>
     <div class="searchresults">
+
       <li x-ng-repeat="s in searchSongs">
         <p id="songsearchtitle">{{s.name}}</p> 
         <p id="artistsearchtitle">{{s.artist}} </p><br />
