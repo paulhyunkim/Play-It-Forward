@@ -14,9 +14,6 @@ class User < ActiveRecord::Base
 	has_many :playlists
 	has_many :songs
 
-	reverse_geocoded_by :latitude, :longitude
-	after_validation :reverse_geocode
-
 	def range
     %{ %s / %s AS range} % [distance_to_point, METERS_IN_A_MILE]
   end
