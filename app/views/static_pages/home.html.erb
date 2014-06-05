@@ -5,10 +5,14 @@
 		<a href="#introbox"><div class="navlogo"></div></a>
 
 		<div class="cl-effect-13">
-		<%= link_to "LOG IN", new_sessions_path, class: "cl-effect-13" %>
+
+	<!-- 	<%= link_to "LOG IN", new_sessions_path, class: "cl-effect-13" %> -->
+		
+		<h1 class="cl-effect-13"><a href="#" data-reveal-id="loginmodal">LOG IN</a></h1>
 		<h1 class="cl-effect-13"><a href="#" data-reveal-id="myModal">SIGNUP</a></h1>
 
-		<!-- <%= link_to "SIGN UP", new_user_path, class: "cl-effect-13" %> -->
+		
+
 		<a href="#whoarewe" class="cl-effect-13">HOW IT WORKS</a>
 		
 	 	</div>
@@ -67,4 +71,10 @@
   <%= render partial: 'users/form', :controller=>"users", :action =>"new" %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
+<div id="loginmodal" class="reveal-modal" data-reveal>
+  <%= render partial: 'sessions/form', :controller=>"sessions", :action =>"new" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
   
