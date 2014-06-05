@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 	    @songs = []
 	  end
 
+	  
 	  respond_with @songs
 	end
 
