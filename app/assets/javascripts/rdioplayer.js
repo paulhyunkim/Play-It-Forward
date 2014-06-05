@@ -1,5 +1,6 @@
 // a global variable that will hold a reference to the api swf once it has loaded
 var apiswf = null;
+var lastSong = null;
 
 $(document).ready(function() {
   // on page load use SWFObject to load the API swf into div#apiswf
@@ -82,15 +83,21 @@ callback_object.playingTrackChanged = function playingTrackChanged(playingTrack,
     $('#artist').text(playingTrack['artist']);
     $('#art').attr('src', playingTrack['icon']);
   }
-
-  console.log("track changed");
-  // HAVE IT LOAD THE RANDOMIZER AND ADD TO PLAYLIST
-  apiswf.rdio_queue("t32819047");
 }
 
 callback_object.playingSourceChanged = function playingSourceChanged(playingSource) {
   // The currently playing source changed.
   // The source metadata, including a track listing is inside playingSource.
+  console.log("track changed");
+  var nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+  while (nextSong === lastSong) {
+    var nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+  }
+
+
+  apiswf.rdio_queue(nextSong.key);
+  console.log(nextSong.title);
+  lastSong = nextSong;
 }
 
 callback_object.volumeChanged = function volumeChanged(volume) {
