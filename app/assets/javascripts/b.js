@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 	$('#introbox #play').hide().fadeIn(2000);
 	$('#introbox h2').hide().delay(700).fadeIn(2000);
+
 // ----------------------------------------------------
 
 }); //closes document.ready

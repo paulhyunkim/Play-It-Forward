@@ -4,29 +4,37 @@ font-family:'Brandon Grotesque Bold';
 src: URL('brandon_grotesque_bold.ttf')
 }
 
-.myformcontrol {
+.myformcontrol{
+	width: 450px !important;
 	height: 50px !important;
-	font-size: 30px !important;
+	border-radius: 10px !important;
+	font-size: 20px !important;
+	font-family: 'Raleway', sans-serif !important;
 }
 
 #user_gender{
-	height:50px;
-	margin-bottom: 5px;
-	font-size:20px;
+	margin-bottom: 10px;
+	width: 450px !important;
+	height: 50px !important;
+	border-radius: 10px !important;
+	font-size: 20px !important;
+	font-family: 'Raleway', sans-serif !important;
 }
 
 #formbox{
 	margin:50px auto;
 }
 
+.buttonsignup{
+	font-family: 'Raleway', sans-serif !important;
+	border-radius: 10px;
+}
 .sectionbox {
 	padding:100px;
 	height:710px;
 	overflow:hidden;
 	font-family: 'Brandon Grotesque Bold';	
-	text-align:center;
-
-	
+	text-align:center;	
 }
 
 #introbox {
