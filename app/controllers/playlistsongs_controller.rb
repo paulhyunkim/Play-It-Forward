@@ -1,4 +1,4 @@
-class PlaylistsController < ApplicationController
+class PlaylistsongsController < ApplicationController
 before_action :set_song, :only => [:edit, :update, :destroy]
 	before_action :authenticate_user
 	respond_to :html, :json
