@@ -1,6 +1,11 @@
-<div class= "userbody">
+
+<div x-ng-app="user_app">
+<div x-ng-controller="UserCtrl">
+
+<div class= "userbody" x-ng-app="user_app">
 
 <%= render "users/nav_bar" %>
+
   <div class = "bodybox">
     <ul class = "large-block-grid-3 small-block-grid-1">
       <li>
@@ -63,7 +68,26 @@
       </li>
 
       <li>
-        <div class = "maincontent" id ="mapbody">MAP HERE</div>
+        <div class = "maincontent" id ="mapbody">
+          <h1 class="bigtitle">Current Location:</h1><br />
+          <h1 class="bigtitle">Santa Monica</h1> <br />
+          <%= image_tag 'map.png', class:"mapbutton" %>
+
+          <div id="usermaplocation"></div>
+
+          <button></button>
+
+          <input type="text" value="34.013678999999996" ng-model="lat"> <input type="text" value="-118.49610919999999" ng-model="lng">
+          <p>{{lat}}, {{lng}}</p>
+
+            <reverse-geocode lat="{{lat}}" lng="{{lng}}" />
+
+
+
+
+
+        </div>
+
       </li>
     </ul>
   </div>
@@ -74,8 +98,6 @@
 <!-- PAULS SHIT BELOW -->
 <!-- DONT FUCK WITH THIS -->
 
-<div x-ng-app="user_app">
-<div x-ng-controller="UserCtrl" class="row">
 
 <%#= form_tag(users_path, :method => "get", id: "search-form") do %>
   <%#= text_field_tag :search, params[:search], placeholder: "Search Users" %>
@@ -106,17 +128,10 @@
   </li>
 </ul>
 
-
-
-
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
 <!--   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
-
-
 
 
   <div class="container">
@@ -177,7 +192,7 @@
 </div>
 
 <p><button onclick="geoFindMe()">Show my location</button></p>
-<div id="out"></div>
+<div id="usermaplocation"></div>
 
 
 

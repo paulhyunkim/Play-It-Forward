@@ -18,7 +18,6 @@ $(function(){
 
 $(window).on('scroll', function(){
     var offset = $(document).scrollTop(), opacity = 0; 
-    console.log(offset);
     if( offset <= fadeBegin ){
         opacity = 1; 
     } else if( offset <= fadeFinish ){

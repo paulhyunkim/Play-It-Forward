@@ -1,4 +1,4 @@
-var userApp = angular.module('user_app', ['ngResource']).config(
+var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
     var defaults = $httpProvider.defaults.headers;
@@ -8,6 +8,33 @@ var userApp = angular.module('user_app', ['ngResource']).config(
     defaults.common['Accept'] = 'application/json';
 
 }]);
+
+
+// CITY name generator
+userApp.directive('reverseGeocode', function () {
+        console.log('reverseGeocode');
+        return {
+            restrict: 'E',
+            template: '<div></div>',
+            link: function (scope, element, attrs) {
+                var geocoder = new google.maps.Geocoder();
+                var latlng = new google.maps.LatLng(attrs.lat, attrs.lng);
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            element.text(results[0].address_components[2].long_name);
+                        } else {
+                            element.text('Location not found');
+                        }
+                    } else {
+                        element.text('Geocoder failed due to: ' + status);
+                    }
+                });
+            },
+            replace: true
+        }
+    });
+//END OF CITY generator
 
 userApp.factory('UserSong', ['$resource', function($resource) {
   console.log("in the factory");
@@ -27,6 +54,9 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(Use
 
     // load user's songs on page upon load
     $scope.userSongs = [];
+    $scope.alerts = [
+  ];
+
   	UserSong.query(function(songs) {
       $scope.userSongs = songs;
       console.log($scope.userSongs);
@@ -62,6 +92,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(Use
         image_url: song.icon400
       });
       console.log($scope.newUserSong)
+      
       $scope.newUserSong.$save(function(song) {
         $scope.userSongs.push(song)
         $scope.newUserSong = new UserSong();
@@ -78,6 +109,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', '$scope', function(Use
     }
 
 }])
+
+
 
 // userApp.factory('All', ['$resource', function($resource) {
 //   return $resource('/songs/all/:id',
