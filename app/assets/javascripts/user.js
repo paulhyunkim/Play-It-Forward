@@ -23,9 +23,7 @@ var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config
 
 // CITY name generator
 // added the reverse Geocode directive for Angular
-
 userApp.directive('reverseGeocode', function () {
-
         return {
             restrict: 'E',
             template: '<div></div>',
@@ -50,33 +48,36 @@ userApp.directive('reverseGeocode', function () {
 // end of geocode
 
 userApp.factory('UserSong', ['$resource', function($resource) {
-  return $resource('/songs/:id',
+  return $resource('/usersongs/:id',
     {id: '@id'},
     {update: { method: 'PATCH'}});
     }]);
 
 userApp.factory('SearchSong', ['$resource', function($resource) {
-  return $resource('/users/:id',
+  return $resource('/searchsongs/:id',
     {id: '@id'},
     {update: { method: 'PATCH'}});
     }]);
 
 userApp.factory('PlaylistSong', ['$resource', function($resource) {
-  return $resource('/playlists/:id',
+  return $resource('/playlistsongs/:id',
+    {id: '@id'},
+    {update: { method: 'PATCH'}});
+    }]);
+
+userApp.factory('CurrentUser', ['$resource', function($resource) {
+  return $resource('/currentuser/:id',
     {id: '@id'},
     {update: { method: 'PATCH'}});
     }]);
 
 
-userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scope', function(UserSong, SearchSong, PlaylistSong, $scope) {
+userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'CurrentUser', '$scope', function(UserSong, SearchSong, PlaylistSong, CurrentUser, $scope) {
 
     // load user's songs on page upon load
     $scope.userSongs = [];
     $scope.alerts = [
   ];
-
-
-
 
   	UserSong.query(function(songs) {
       $scope.userSongs = songs;
@@ -98,7 +99,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
 
     // only search when search button is clicked
     $scope.search = function(searchTerm) {
-      SearchSong.query({search: searchTerm }, function(songs) {
+      SearchSong.query({ search: searchTerm }, function(songs) {
         $scope.searchSongs = songs;
         console.log($scope.searchSongs);
       });
@@ -110,7 +111,6 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
       apiswf.rdio_play(key);
     }
 
-    // TRYING TO SAVE API GENERATED JSON TO DB
     $scope.saveSong = function (song) {
       $scope.newUserSong = new UserSong({
         key: song.key,
@@ -135,6 +135,15 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
         $scope.songs.splice(position, 1);
       }, function(errors) {
         $scope.errors = errors.data
+      });
+    }
+
+    $scope.updateUserLocation = function (song) {
+      var curUser = CurrentUser.get({})
+      
+      $scope.newUserSong.$save(function(song) {
+        $scope.userSongs.push(song)
+        $scope.newUserSong = new UserSong();
       });
     }
 
