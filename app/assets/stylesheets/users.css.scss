@@ -5,12 +5,16 @@
 .userbody {
 	height:720px;
 	width:100%;
-	background-image: url('index_bg.jpg');
+	background-image: url('indexbg.jpg');
 	background-size:cover;
 	background-position: center center;
 	padding-top:10px;
 }
 
+
+button{
+	font-size:40%;
+}
 
 #usernavbar{
 	height:80px;
@@ -26,6 +30,7 @@
 	margin-right: 20px;
 }
 
+
 #navlogo{
 	background-image:url('playitforward.png');
 	background-size: contain;
@@ -39,14 +44,14 @@
 }
 
 .bodybox{
-	height:580px;
+	height:600px;
 	margin:20px;
 }
 
 .maincontent{
 	background-color: rgba(0,0,51,0.2);
 	font-family:'Raleway', sans-serif;
-	height:520px;
+	height:530px;
 	padding:25px 20px 20px 20px;
 	color:white;	
 }
@@ -55,10 +60,6 @@
 .bigtitle{
 	color:white;
 	font-size: 25px;
-}
-
-#mysongbigtitle{
-	margin-bottom: 10px;
 }
 
 #mysongs {
@@ -74,6 +75,7 @@
 
 #trialplayer{
 	width: 400px;
+	display:none;
 }
 
 .testplayer{
@@ -82,7 +84,6 @@
 	text-align: center;
 	padding:5px;
 	width:100%;
-	margin-bottom: 50px;
 }
 
 .testplayer div{
@@ -90,18 +91,14 @@
 	display:inline;
 }
 
-.songproperties img {
-	float:right;
-}
 .songproperties{
-	font-size: 25px;
+	font-size: 15px;
 }
 
 .mapbutton {
 	float:right;
 	width: 50px;
 	height: auto;
-	position: relative;
 	top: -90px;
 }
 

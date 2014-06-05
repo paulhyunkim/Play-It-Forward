@@ -16,66 +16,62 @@
           <%= @current_user.city %>,
           <%= @current_user.state %>           
 
-            <br /><br /><br />
-          <h1 class = "bigtitle" id = "mysongbigtitle">MY SONGS:</h1><br />
-          <div id = "mysongs">
+          <br /><br /><br />
+          <h1 class = "bigtitle" id = "mysongbigtitle">MY SONGS: <a href="#" data-reveal-id="searchModal"><button>+ ADD NEW SONG</button></a></h1><br />
 
+          <div id = "mysongs">  
             <ul>
               <li x-ng-repeat="s in userSongs">
                 {{s.artist}} <br/> {{s.title}}  <a ng-click="playSong(s.key);">Play</a>  <a ng-click="deleteSong(s)">Delete</a>
               </li>
             </ul>
-
-              + ADD NEW SONG
           </div>
-      </div>
+
+        </div>
       </li>
+
 
       <li>
         <div class = "maincontent" id ="playerbody"><h1 class="bigtitle">Now Playing: </h1>
           <br />
-
-
-
-          
             <div class = "albumphoto">
               <img src="" id="art" class="albumArt">
             </div>
 
-          <div class="testplayer">
-            <button id="play" class="btn btn-default">play</button>
-            <button id="pause" class="btn btn-default"><i class="fa fa-pause"></i> Pause</button>
-            <button id="next" class="btn btn-default"><i class="fa fa-step-forward"></i> Next</button>
-          </div>
+            <div class="testplayer">
+              <button id="play" class="btn btn-default">play</button>
+              <button id="pause" class="btn btn-default"> Pause</button>
+              <button id="next" class="btn btn-default">Next</button>
+           </div>
 
+           <div id="apiswf"></div>
+              <div class="well" style="overflow: hidden;">
+                <div class="row" style="margin-bottom: 10px;">
+                  <!-- <div class="col-md-2">Enter Album Key </div> -->
+                  <div class="col-md-10">
+                      <!-- <input id="play_key" class="form-control" value="t10597075"> -->
+                  </div>
+                </div>
 
-          <div class="songproperties">
-            <%= image_tag 'heart.png' %>
-          <p><span id="artist"></span></p><br />
-          <p><span id="track"></span> </p>
-        </div>
-        </div>
-      </li>
+                <div class="songproperties">
+                  <p><span id="artist"></span></p><br />
+                  <p><span id="track"></span> </p>
+               </div>
+            </div>
+        </li> 
 
       <li>
         <div class = "maincontent" id ="mapbody">
           <h1 class="bigtitle">Current Location:</h1><br />
-          <h1 class="bigtitle">Santa Monica</h1> <br />
           <%= image_tag 'map.png', class:"mapbutton" %>
-
+          <p><button onclick="geoFindMe()">Show my location</button></p>
           <div id="usermaplocation"></div>
-
-          <button></button>
 
        <!--    <input type="text" value="34.013678999999996" ng-model="lat"> <input type="text" value="-118.49610919999999" ng-model="lng">
           <p>{{lat}}, {{lng}}</p>
-
             <reverse-geocode lat="{{lat}}" lng="{{lng}}" />
  -->
-
-
         </div>
-        
       </li>
     </ul>
   </div>
@@ -92,8 +88,7 @@
   <%#= submit_tag "Search", :name => nil %>
 <%# end %>
 
-<input type="text" ng-model="searchTerm">
-<button ng-click="search(searchTerm)">Search Song</button>
+
 <!-- <ul>
   <li x-ng-repeat="s in userSongs">
     {{s.artist}} - {{s.title}} - {{s.key}} <a ng-click="deleteSong(s)">Delete</a>
@@ -101,14 +96,20 @@
 </ul> -->
 
 
-   <br>
-<ul>
-  <li x-ng-repeat="s in searchSongs">
-    {{s.artist}} - {{s.name}} - {{s.key}} <a ng-click="playSong(s.key);">Play</a> <a ng-click="deleteSong(s)">Delete</a> <a ng-click="saveSong(s)">Add to Playlist</a>
-  </li>
-</ul>
+<br>
+  <div id="searchModal" class="reveal-modal" data-reveal >
+    <input type="text" ng-model="searchTerm">
+    <button ng-click="search(searchTerm)">Search Song</button>
+    <ul>
+      <li x-ng-repeat="s in searchSongs">
+        {{s.artist}} - {{s.name}} - {{s.key}} <a ng-click="playSong(s.key);">Play</a> <a ng-click="deleteSong(s)">Delete</a> <a ng-click="saveSong(s)">Add to Playlist</a>
+      </li>
+    </ul>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
 <!--   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
@@ -123,14 +124,7 @@
       <div id="nobody">To hear full tracks subscribe to Rdio.</div>
     </div>
 
-    <div id="apiswf"></div>
-      <div class="well" style="overflow: hidden;">
-        <div class="row" style="margin-bottom: 10px;">
-          <div class="col-md-2">Enter Album Key</div>
-          <div class="col-md-10">
-            <input id="play_key" class="form-control" value="t10597075">
-          </div>
-        </div>
+<!-- 
         <div class="row">
           <div class="col-md-6"> 
             <div class="playControls btn-group">
@@ -140,8 +134,9 @@
               <button id="previous" class="btn btn-default"><i class="fa fa-step-backward"></i> Previous</button>
               <button id="next" class="btn btn-default"><i class="fa fa-step-forward"></i> Next</button>
             </div>
-          </div>
-          <div class="col-md-6"> 
+          </div> -->
+
+<!--           <div class="col-md-6"> 
             <div id="freq" class="frequency">
               <div></div>
               <div></div>
@@ -156,35 +151,22 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-     <!--  <div class="row well">
+<!--    <div class="row well">
         <div class="artistAlbumInfo well col-md-6 ">
           <h3><span id="artist"></span> - <span id="track"></span></h3>
           <img src="" id="art" class="albumArt">
         </div> -->
-
-
-        <div class="col-md-6">
-          <h3 id="album"></h3>
-          <h4>Remaining <p id="remaining"></p></h4>
-          <h4>Playstate <p id="playState"></p></h4>
-          <h4>Position <p id="position"></p></h4>
-        </div>
-      </div>
 </div>
 
-<p><button onclick="geoFindMe()">Show my location</button></p>
-<div id="usermaplocation"></div>
 
 
 
-<h1> Songs </h1>
-
-<div id="songs-destination"></div>
+<!-- <div id="songs-destination"></div> -->
 
 
-</div>
+  </div>
 </div>
 
 <!-- 
