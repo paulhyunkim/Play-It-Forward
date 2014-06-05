@@ -1,5 +1,5 @@
 function geoFindMe() {
-  var output = document.getElementById("out");
+  var output = document.getElementById("usermaplocation");
 
   if (!navigator.geolocation){
     output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
