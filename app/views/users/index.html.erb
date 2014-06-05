@@ -98,13 +98,42 @@
 
 <br>
   <div id="searchModal" class="reveal-modal" data-reveal >
-    <input type="text" ng-model="searchTerm">
-    <button ng-click="search(searchTerm)">Search Song</button>
-    <ul>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="row collapse">
+          <div class="small-10 columns">
+            <input class="searchtext" type="text" placeholder="Type in song or artist..." ng-model="searchTerm">
+          </div>
+          <div class="small-2 columns">
+            <button ng-click="search(searchTerm)" class="searchbutton">SEARCH MUSIC</button><br/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <ol><br/><br/>
+    <div class="searchresults">
       <li x-ng-repeat="s in searchSongs">
-        {{s.artist}} - {{s.name}} - {{s.key}} <a ng-click="playSong(s.key);">Play</a> <a ng-click="deleteSong(s)">Delete</a> <a ng-click="saveSong(s)">Add to Playlist</a>
+        <p id="songsearchtitle">{{s.name}}</p> 
+        <p id="artistsearchtitle">{{s.artist}} </p><br />
+            <span class="searchlinks">
+                <a ng-click="playSong(s.key);">Play</a> 
+                <a ng-click="deleteSong(s)">Delete</a> 
+                <a ng-click="saveSong(s)">Add to Playlist</a>
+            </span>
+        
+      
+        <br />
       </li>
-    </ul>
+    </ol>
+    
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
