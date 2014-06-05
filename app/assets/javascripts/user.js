@@ -65,19 +65,14 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
     {update: { method: 'PATCH'}});
     }]);
 
-userApp.factory('CurrentUser', ['$resource', function($resource) {
-  return $resource('/currentuser/:id',
-    {id: '@id'},
-    {update: { method: 'PATCH'}});
-    }]);
 
 
-userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'CurrentUser', '$scope', function(UserSong, SearchSong, PlaylistSong, CurrentUser, $scope) {
+
+userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scope', function(UserSong, SearchSong, PlaylistSong, $scope) {
 
     // load user's songs on page upon load
     $scope.userSongs = [];
-    $scope.alerts = [
-  ];
+    $scope.alerts = [];
 
   	UserSong.query(function(songs) {
       $scope.userSongs = songs;
@@ -112,6 +107,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     }
 
     $scope.saveSong = function (song) {
+      console.log("attempting to save song");
       $scope.newUserSong = new UserSong({
         key: song.key,
         artist: song.artist,
@@ -121,7 +117,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
         is_explicit: song.isExplicit,
         image_url: song.icon400
       });
-      console.log($scope.newUserSong)
+      console.log($scope.newUserSong);
       
       $scope.newUserSong.$save(function(song) {
         $scope.userSongs.push(song)
@@ -138,21 +134,16 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       });
     }
 
-    $scope.updateUserLocation = function (song) {
-      var curUser = CurrentUser.get({})
+    // $scope.updateUserLocation = function (song) {
+    //   var curUser = CurrentUser.get();
+    //   console.log (curUser);
       
-      $scope.newUserSong.$save(function(song) {
-        $scope.userSongs.push(song)
-        $scope.newUserSong = new UserSong();
-      });
-    }
+    // }
 
 
 
 
-
-
-}])
+}]);
 
 
 

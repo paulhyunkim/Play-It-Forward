@@ -16,7 +16,3 @@
 //= require angular-resource
 //= require foundation
 //= require_tree .
-
-
-
-
