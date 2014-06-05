@@ -54,15 +54,19 @@ src: URL('brandon_grotesque_bold.ttf')
 	display: inline-block;
 	
 	}
-	#play {
+	#homeplay {
 	background-image: url('logo_right.png');
 	background-size: cover;
 	width: 85px;
 	height: 98px;
 	margin-left: -85px;
 	display: inline-block;
+}
 
-	
+.blankbox{
+	height:300px;
+	width:300px;
+	border: 1px solid white;
 }
 
 #playlistimage{

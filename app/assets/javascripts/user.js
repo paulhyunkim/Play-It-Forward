@@ -67,6 +67,9 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
     $scope.alerts = [
   ];
 
+
+
+
   	UserSong.query(function(songs) {
       $scope.userSongs = songs;
       console.log($scope.userSongs);
@@ -126,6 +129,14 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
         $scope.errors = errors.data
       });
     }
+
+
+    $scope.isPlayerLoaded = function(){
+      $scope.isPlayerLoaded = isPlayerLoaded;
+      console.log(isPlayerLoaded);
+    }
+
+
 
 }])
 

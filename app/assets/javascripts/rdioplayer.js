@@ -1,6 +1,8 @@
 // a global variable that will hold a reference to the api swf once it has loaded
 var apiswf = null;
 var lastSong = null;
+var isPlayerLoaded = false;
+console.log(isPlayerLoaded);
 
 $(document).ready(function() {
   // on page load use SWFObject to load the API swf into div#apiswf
@@ -83,6 +85,8 @@ callback_object.playingTrackChanged = function playingTrackChanged(playingTrack,
     $('#artist').text(playingTrack['artist']);
     $('#art').attr('src', playingTrack['icon']);
   }
+  isPlayerLoaded = true;
+  console.log(isPlayerLoaded);
 }
 
 callback_object.playingSourceChanged = function playingSourceChanged(playingSource) {

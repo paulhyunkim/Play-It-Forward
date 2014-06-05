@@ -57,16 +57,23 @@
 	font-size: 25px;
 }
 
+#mysongbigtitle{
+	margin-bottom: 10px;
+}
 
 #mysongs {
 	background-color: rgba(255,255,255,0.3);
 	overflow-y:scroll;
-	height:390px;
+	height:350px;
 	padding:20px;
 }
 
 .albumphoto {
 	text-align: center;
+}
+
+#trialplayer{
+	width: 400px;
 }
 
 .testplayer{
