@@ -1,6 +1,7 @@
+
 var playlistSongs = [];
 
-var userApp = angular.module('user_app', ['ngResource']).config(
+var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
     var defaults = $httpProvider.defaults.headers;
@@ -11,9 +12,12 @@ var userApp = angular.module('user_app', ['ngResource']).config(
 
 }]);
 
+
+// CITY name generator
 // added the reverse Geocode directive for Angular
 
 userApp.directive('reverseGeocode', function () {
+
         return {
             restrict: 'E',
             template: '<div></div>',
@@ -23,7 +27,7 @@ userApp.directive('reverseGeocode', function () {
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
-                            element.text(results[1].formatted_address);
+                            element.text(results[0].address_components[2].long_name);
                         } else {
                             element.text('Location not found');
                         }
@@ -35,10 +39,7 @@ userApp.directive('reverseGeocode', function () {
             replace: true
         }
     });
-
-
 // end of geocode
-
 
 userApp.factory('UserSong', ['$resource', function($resource) {
   return $resource('/songs/:id',
@@ -63,6 +64,9 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
 
     // load user's songs on page upon load
     $scope.userSongs = [];
+    $scope.alerts = [
+  ];
+
   	UserSong.query(function(songs) {
       $scope.userSongs = songs;
       console.log($scope.userSongs);
@@ -107,6 +111,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
         image_url: song.icon400
       });
       console.log($scope.newUserSong)
+      
       $scope.newUserSong.$save(function(song) {
         $scope.userSongs.push(song)
         $scope.newUserSong = new UserSong();
@@ -123,6 +128,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
     }
 
 }])
+
+
 
 // userApp.factory('All', ['$resource', function($resource) {
 //   return $resource('/songs/all/:id',

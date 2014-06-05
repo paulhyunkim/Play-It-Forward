@@ -26,3 +26,4 @@ function geoFindMe() {
 
   navigator.geolocation.getCurrentPosition(success, error);
 }
+
