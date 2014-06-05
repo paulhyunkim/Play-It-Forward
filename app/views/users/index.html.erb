@@ -1,8 +1,8 @@
 
-<div x-ng-app="user_app">
+<div x-ng-app="user_app" class= "userbody">
 <div x-ng-controller="UserCtrl">
 
-<div class= "userbody" x-ng-app="user_app">
+<div  x-ng-app="user_app">
 
 <%= render "users/nav_bar" %>
 
@@ -98,7 +98,7 @@
 
 <br>
   <div id="searchModal" class="reveal-modal" data-reveal >
-    <input type="text" ng-model="searchTerm">
+    <input type="text" ng-model="searchTerm" placeholder= "Enter an Artist or Song name">
     <button ng-click="search(searchTerm)">Search Song</button>
     <ul>
       <li x-ng-repeat="s in searchSongs">
