@@ -68,8 +68,9 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
     }]);
 
 userApp.factory('CurrentUser', ['$resource', function($resource) {
-  return $resource('/currentuser',
-    { 'update': { method: 'PATCH'}});
+  return $resource('/currentusers',
+    { },
+    { update: { method: 'PATCH'}});
     }]);
 
 
@@ -116,13 +117,14 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
           lng: userLng  
         };
 
+        CurrentUser.update({}, curUser);
         console.log(userLat);
         console.log(userLng);
         console.log(curUser);
       });
       console.log(curUser);
 
-      CurrentUser.update({}, curUser);
+      
     }
 
     $scope.playSong = function(key) {
@@ -182,7 +184,3 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
    
 // }])
 
-
-$(document).ready(function(){
-    apiswf.rdio_play($('#play_key').val());
-  });

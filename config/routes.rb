@@ -6,7 +6,7 @@ PlayItForward::Application.routes.draw do
   resources :playlistsongs
   resources :usersongs
   resources :searchsongs
-  resources :currentuser
+  resource :currentusers
 
 
   resource :sessions, only: [:new, :create, :destroy]
