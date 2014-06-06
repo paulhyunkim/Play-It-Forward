@@ -154,3 +154,76 @@ button{
 	padding: 5px;
 }
 
+
+
+.trash {
+	float:right;
+	position: relative;
+	top: -30px;
+	height: 18px;
+}
+
+.playbutton{
+	background-image: url('1play.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:80px;
+	height:65px;
+	color: transparent;
+}
+
+.playbutton:hover{
+	background-image: url('1playhov.png');
+	-webkit-transition: all .05s ease;
+  	-moz-transition: all .05s ease;
+  	-o-transition: all .05s ease;
+  	transition: all .05s ease;
+
+}
+
+.pausebutton{
+	background-image: url('1pause.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:65px;
+	height:65px;
+	color: transparent;
+}
+
+.pausebutton:hover{
+	background-image: url('1pausehov.png');
+	-webkit-transition: all .05s ease;
+  	-moz-transition: all .05s ease;
+  	-o-transition: all .05s ease;
+  	transition: all .05s ease;
+
+}
+.nextbutton{
+	background-image: url('1fwd.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:80px;
+	height:65px;
+	color: transparent;
+}
+
+.nextbutton:hover{
+	background-image: url('1fwdhov.png');
+	-webkit-transition: all .05s ease;
+  	-moz-transition: all .05s ease;
+  	-o-transition: all .05s ease;
+  	transition: all .05s ease;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

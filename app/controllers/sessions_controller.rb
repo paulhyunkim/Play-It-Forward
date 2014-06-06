@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
 		if @user == nil || !@user.authenticate(params[:session][:password])
 			flash.now[:error] = "Invalid email and password combination!"
-			redirect_to root_path
+			render 'new'
 		else
 			session[:remember_token] = @user.id
 			@current_user = @user
