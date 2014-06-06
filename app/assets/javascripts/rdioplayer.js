@@ -66,6 +66,17 @@ callback_object.ready = function ready(user) {
   // apiswf.rdio_play($('#play_key').val());
 }
 
+
+//ENTER KEY to trigger search
+$("#searchtextid").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#searchbuttonid").click();
+    }
+});
+
+
+
+
 callback_object.freeRemainingChanged = function freeRemainingChanged(remaining) {
   $('#remaining').text(remaining);
 }

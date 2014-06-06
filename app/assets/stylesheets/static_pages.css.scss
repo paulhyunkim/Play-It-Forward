@@ -23,7 +23,7 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 #searchModal{
-	padding: 80px;
+	padding: 40px;
 	background-color: rgba(255,255,255,0.50);
 	color: black;
 	border-radius: 10px;
@@ -292,7 +292,6 @@ nav{
 	position: relative;
 	left:150px;
 	top: -2px;
-
 }
 
 
@@ -300,25 +299,47 @@ nav{
 	font-weight: bold;
 	color: white;
 	font-size:18px;
+	margin-bottom:4px;
 }
 
 #artistsearchtitle{
 	font-size:15px;
 	color: #C0C0C0;
 	margin-left: 10px;
-
 }
+
+
 .searchresults{
-	padding: 20px;
-	width: 430px;
-	height: 350px;
+	padding: 15px;
+	width: 100%;
+	height: auto;
 	background-color: rgba(0,0,0,0.6);
-	overflow-y: scroll;
-	overflow-x: hidden;
-	position: relative;
-	left: -35px;
 }
 
+.searchresults:hover{
+	background-color: rgba(0,0,0,0.9);
+	-webkit-transition: all .05s ease;
+  	-moz-transition: all .05s ease;
+  	-o-transition: all .05s ease;
+  	transition: all .05s ease;
+}
+
+
+.resultsection{
+	border-radius: 3px;
+	overflow-y: scroll;
+	max-height: 360px;
+}
 .searchlinks{
-	display: inline;
+	position: relative;
+	top: -37px;
+	left: -37px;
+	background-image: url('addbutton.png');
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+.searchlinks:hover{
+	background-image: url('addbuttonhover.png');
+
 }
