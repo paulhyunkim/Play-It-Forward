@@ -138,7 +138,8 @@ callback_object.positionChanged = function positionChanged(position) {
   //The position within the track changed to position seconds.
   // This happens both in response to a seek and during playback.
   $('#position').text(position);
-}
+
+  }
 
 callback_object.queueChanged = function queueChanged(newQueue) {
   // The queue has changed to newQueue.
