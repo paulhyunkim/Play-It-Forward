@@ -54,6 +54,10 @@ class SongsController < ApplicationController
     end
   end
 
+  def update
+  	p "hello"
+  end
+
 	private
 
  	def set_song
