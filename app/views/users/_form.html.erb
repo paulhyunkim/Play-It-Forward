@@ -17,15 +17,29 @@
 
 <div class="centersignup">
 <div class = "large-6 medium-7 small-7" id ="formbox">
+
 	<%= u.text_field :username, maxlength: 15, placeholder: "Username (at least 4 characters)", class: "myformcontrol" %>
-	<%= u.password_field :password, maxlength: 15, placeholder: "Password (at least 8 characters)", class: "myformcontrol" %>
-	<%= u.password_field :password_confirmation, maxlength: 15, placeholder: "Re-enter password", class: "myformcontrol" %>
-	<%= u.text_field :email, placeholder: "Email Address", class: "myformcontrol" %>
-	<%= u.text_field :age, maxlength: 2, placeholder: "Age", class: "myformcontrol" %>
+
+	<%= u.password_field :password, maxlength: 15, placeholder: "Password (at least 8 characters)", class: "passwordformcontrol" %>
+
+	<%= u.password_field :password_confirmation, maxlength: 15, placeholder: "Re-enter password", class: "confirmformcontrol" %>
+	
+  <%= u.text_field :email, placeholder: "Email Address", class: "myformcontrol" %>
+
+  <div class="inlineform">
+	<%= u.text_field :age, maxlength: 2, placeholder: "Age", class: "smallformcontrol" %>
+  
 	<%= u.select :gender, [["Select Gender", "Select Gender"],["Male", "Male"],["Female","Female"],["Other", "Other"]] %>
-	<%= u.text_field :city, placeholder: "City", class: "myformcontrol" %><%= u.text_field :state, placeholder: "State", class: "myformcontrol" %>
+	</div>
+
+  <div class="inlineform">
+  <%= u.text_field :city, placeholder: "City", class: "cityformcontrol" %>
+
+  <%= u.text_field :state, placeholder: "State", class: "stateformcontrol" %>
 
 	<%= u.submit "GET STARTED", class: "submitsign" %>
+  </div>
+
 <% end %>
 </div>
 </div>

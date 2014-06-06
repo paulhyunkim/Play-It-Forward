@@ -8,6 +8,7 @@
 
 <button ng-click="updateUserLocation()"></button>
 
+
   <div class = "bodybox">
     <ul class = "large-block-grid-3 small-block-grid-1">
       <li>
@@ -34,6 +35,10 @@
                 <span class="songoptions">
                 <a ng-click="playSong(s.key);">Play</a>  
                 <a ng-click="deleteSong(s);">Delete</a>
+                <a ng-click="deleteSong(s)">
+                  <%= image_tag 'trash.png', class: "trash" %>
+
+                </a>
                 </span>
               </div>
             
@@ -54,10 +59,10 @@
 
 
 
-              <button id="play" class="btn btn-default">play</button>
-              <button id="pause" class="btn btn-default"> Pause</button>
-              <button id="next" class="btn btn-default">Next</button>
-           
+              <div id="play" class="playbutton">play</div>
+              <div id="pause" class="pausebutton">pa</div>
+
+              <div id="next" class="nextbutton">next</div>
 
 
 
@@ -72,15 +77,15 @@
                       <!-- <input id="play_key" class="form-control" value="t10597075"> -->
                   </div>
                 </div>
-
+                <br />
                 <div class="songproperties">
-
-                  <p>Artist:  <span id="artist"></span></p>
-                  <p>Track:  <span id="track"></span> </p>
+                  <span id="track"></span> </p>
+                  <p>Artist:  <span class="playartist" id="artist"></span></p>
+                  
                     <p>Duration:  <span id="position"></span> </p>
 
-                  <p><span id="artist"></span></p><br />
-                  <p><span id="track"></span> </p>
+                  <p><span  id="artist"></span></p><br />
+                  <p class="playtrack"><span  id="track"></span> </p>
 
                   
                </div>
@@ -145,11 +150,12 @@
     <ol><br/><br/>
     
     <div class="resultsection">
+    <div ng-show="isSongSearched">RESULTS</div>
     <a ng-click="saveSong(s)">
       <div x-ng-repeat="s in searchSongs" class="searchresults">
         <p id="songsearchtitle">{{s.name}}</p> 
         <p id="artistsearchtitle">{{s.artist}} </p>
-          </a>
+    </a>
       
       </div>
  

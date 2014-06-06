@@ -13,13 +13,81 @@ src: URL('brandon_grotesque_bold.ttf')
 	
 }
 
-#user_gender{
-	margin-bottom: 10px;
-	width: 400px !important;
+.smallformcontrol{
+	width: 100px !important;
 	height: 30px !important;
 	border-radius: 3px !important;
 	font-size: 13px !important;
 	font-family: 'Raleway', sans-serif !important;
+
+	position: absolute;
+    margin-left:40px;
+	
+}
+
+
+.passwordformcontrol{
+	width: 195px !important;
+	height: 30px !important;
+	border-radius: 3px !important;
+	font-size: 10px !important;
+	font-family: 'Raleway', sans-serif !important;
+	position: absolute;
+    margin-left:40px;
+	
+}
+
+
+.confirmformcontrol{
+	width: 195px !important;
+	height: 30px !important;
+	border-radius: 3px !important;
+	font-size: 10px !important;
+	font-family: 'Raleway', sans-serif !important;
+	position: relative;
+	left: 205px;
+    display: inline-block;
+    margin-left: 800px;
+}
+
+
+
+.cityformcontrol{
+	width: 290px !important;
+	height: 30px !important;
+	border-radius: 3px !important;
+	font-size: 13px !important;
+	font-family: 'Raleway', sans-serif !important;
+	position: absolute;
+    margin-left:40px;
+	
+}
+
+
+.stateformcontrol{
+	width: 100px !important;
+	height: 30px !important;
+	border-radius: 3px !important;
+	font-size: 13px !important;
+	font-family: 'Raleway', sans-serif !important;
+	position: relative;
+	left: 300px;
+    display: inline-block;
+    margin-left: 800px;
+}
+#user_gender{
+	margin-bottom: 10px;
+	width: 290px !important;
+	height: 30px !important;
+	border-radius: 3px !important;
+	font-size: 13px !important;
+	font-family: 'Raleway', sans-serif !important;
+
+	position: relative;
+    display: inline-block;
+    margin-left: 110px;
+
+
 }
 
 #searchModal{
@@ -39,11 +107,31 @@ src: URL('brandon_grotesque_bold.ttf')
 	font-family: 'Raleway', sans-serif !important;
 }
 
+.getstartedtext{
+	background-color: rgba(255,255,255,0.5);
+	border: 1px solid black;
+	border-radius: 15px;
+	position: relative;
+	width: 200px;
+	height: 40px;
+	padding: 10px;
+	float: right;
+	margin-right: 200px;
+}
+
+.getstartedtext:hover{
+	border: 2px solid black;
+}
+
+#getstartedhome{
+	font-size: 20px !important;
+	font-family: 'Raleway', sans-serif !important;
+}
 
 #myModal {
 	background-color: rgba(255,255,255,0.20);
 	width: 480px;
-	height: 570px;
+	height: 450px;
 	border-radius: 10px;
 }
 
@@ -343,3 +431,5 @@ nav{
 	background-image: url('addbuttonhover.png');
 
 }
+
+
