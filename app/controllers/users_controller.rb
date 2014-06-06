@@ -44,6 +44,11 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def destroy
+		session.delete(:remember_token)
+		redirect_to root_path
+	end
+
 	def update
 		@user = User.find(params[:id])
 	end
