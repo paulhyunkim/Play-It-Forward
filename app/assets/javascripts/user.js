@@ -100,6 +100,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     // initialize searchSongs as empty list
     $scope.searchSongs = [];
 
+
+
     // only search when search button is clicked
     $scope.search = function(searchTerm) {
       SearchSong.query({ search: searchTerm }, function(songs) {
@@ -160,6 +162,18 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       });
     }
 
+    $scope.whichButton = function () {
+      if (playOrPaused === 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    $scope.checkPlayState = function() {
+      $scope.playState = playOrPaused;
+      console.log($scope.playState);
+    }
 
 
 
