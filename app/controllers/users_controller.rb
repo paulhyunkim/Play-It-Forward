@@ -5,23 +5,14 @@ class UsersController < ApplicationController
 	
 	
 	def index
-		# client = RdioApi.new(:consumer_key => "px6jnus8n8e94qg7u9fbhpsc", :consumer_secret => "qJzVAj7PxJ")
-	 #  if params[:search]
-	 #    @songs = client.search(:query => params[:search], :types => "track", count: 10).results
-	 #  else
-	 #    @songs = []
-	 #  end
-	 #  respond_with @songs
+		@users = User.all
+		respond_with @users
 	 
 	end
 
 	def show
-		client = RdioApi.new(:consumer_key => "px6jnus8n8e94qg7u9fbhpsc", :consumer_secret => "qJzVAj7PxJ")
-	  if params[:search]
-	    @songs = client.search(:query => params[:search], :types => "track", count: 10).results
-	  else
-	    @songs = []
-	  end
+		@user = User.find(params[:id])
+		respond_with @user
 	end
 
 
