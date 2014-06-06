@@ -74,8 +74,15 @@ button{
 	font-size: 25px;
 }
 
+.smalltitle{
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: 10px;
+	color: #C0C0C0;
+}
+
 #mysongs {
-	background-color: rgba(255,255,255,0.3);
+	background-color: rgba(255,255,255,0.2);
 	overflow-y:scroll;
 	height:350px;
 	padding:20px;
@@ -118,3 +125,32 @@ button{
 #usermaplocation{
 	margin: 0 auto !important;
 }
+.plistsong{
+
+}
+.plistartist{
+	font-size:15px;
+	color: #C0C0C0;
+	margin-left: 10px;
+}
+.songinlist{
+	margin-bottom: 10px;
+}
+
+.songoptions {
+	color:white !important;
+}
+.songoptions a:hover{
+	color:black;
+
+}
+.addnewsong{
+	float: right;
+	margin-top: -25px;
+	background-image: url('addtext.png');
+	background-size: contain;
+	width: 170px;
+	height: 24px;
+	padding: 5px;
+}
+

@@ -6,25 +6,37 @@
 
 <%= render "users/nav_bar" %>
 
+<button ng-click="updateUserLocation()"></button>
+
   <div class = "bodybox">
     <ul class = "large-block-grid-3 small-block-grid-1">
       <li>
         <div class = "maincontent" id ="profilebody">
           <h1 class ="bigtitle">Hello, <%= @current_user.username %>!</h1>
+          <span class="smalltitle">
           <%= @current_user.age %>, 
-          <%= @current_user.gender %> &nbsp;&nbsp;&nbsp;
-          <%= @current_user.city %>,
-          <%= @current_user.state %>           
-
+          <%= @current_user.gender %>
+          
+          </span>
           <br /><br /><br />
-          <h1 class = "bigtitle" id = "mysongbigtitle">MY SONGS: <a href="#" data-reveal-id="searchModal"><button>+ ADD NEW SONG</button></a></h1><br />
+          <h1 class = "bigtitle" id = "mysongbigtitle">MY SONGS: </h1><a href="#" data-reveal-id="searchModal">
+          <div class="addnewsong"></div>
+          </a>
 
+
+          <!-- <button>+ ADD NEW SONG</button></a><br /> -->
+          <br />
           <div id = "mysongs">  
-            <ul>
-              <li x-ng-repeat="s in userSongs">
-                {{s.artist}} <br/> {{s.title}}  <a ng-click="playSong(s.key);">Play</a>  <a ng-click="deleteSong(s)">Delete</a>
-              </li>
-            </ul>
+            
+              <div x-ng-repeat="s in userSongs" class="songinlist">
+                <p class="plistsong">{{s.title}}  <br/>
+                <p class="plistartist">{{s.artist}}</p>
+                <span class="songoptions">
+                <a ng-click="playSong(s.key);">Play</a>  
+                <a ng-click="deleteSong(s)">Delete</a>
+                </span>
+              </div>
+            
           </div>
 
         </div>
@@ -39,9 +51,17 @@
             </div>
 
             <div class="testplayer">
+
+
+
               <button id="play" class="btn btn-default">play</button>
               <button id="pause" class="btn btn-default"> Pause</button>
               <button id="next" class="btn btn-default">Next</button>
+           
+
+
+
+
            </div>
 
            
@@ -54,9 +74,14 @@
                 </div>
 
                 <div class="songproperties">
+
                   <p>Artist:  <span id="artist"></span></p>
                   <p>Track:  <span id="track"></span> </p>
                     <p>Duration:  <span id="position"></span> </p>
+
+                  <p><span id="artist"></span></p><br />
+                  <p><span id="track"></span> </p>
+
                   
                </div>
             </div>
@@ -108,33 +133,28 @@
       <div class="large-6 columns">
         <div class="row collapse">
           <div class="small-10 columns">
-            <input class="searchtext" type="text" placeholder="Type in song or artist..." ng-model="searchTerm">
+            <input class="searchtext" id="searchtextid" type="text" placeholder="Type in song or artist..." ng-model="searchTerm">
           </div>
           <div class="small-2 columns">
-            <button ng-click="search(searchTerm)" class="searchbutton">SEARCH MUSIC</button><br/>
+            <button ng-click="search(searchTerm)" class="searchbutton" id="searchbuttonid">SEARCH MUSIC</button><br/>
           </div>
         </div>
       </div>
     </div>
 
     <ol><br/><br/>
-    <div class="searchresults">
-
-      <li x-ng-repeat="s in searchSongs">
-        <p id="songsearchtitle">{{s.name}}</p> 
-        <p id="artistsearchtitle">{{s.artist}} </p><br />
-            <span class="searchlinks">
-                <a ng-click="playSong(s.key);">Play</a> 
-                <a ng-click="deleteSong(s)">Delete</a> 
-                <a ng-click="saveSong(s)">Add to Playlist</a>
-            </span>
-        
-      
-        <br />
-      </li>
-    </ol>
     
-    <a class="close-reveal-modal">&#215;</a>
+    <div class="resultsection">
+    <a ng-click="saveSong(s)">
+      <div x-ng-repeat="s in searchSongs" class="searchresults">
+        <p id="songsearchtitle">{{s.name}}</p> 
+        <p id="artistsearchtitle">{{s.artist}} </p>
+          </a>
+      
+      </div>
+ 
+    </div>
+       <a class="close-reveal-modal">&#215;</a>
   </div>
 
 

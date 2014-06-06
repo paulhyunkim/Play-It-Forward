@@ -65,10 +65,14 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
     {update: { method: 'PATCH'}});
     }]);
 
+userApp.factory('CurrentUser', ['$resource', function($resource) {
+  return $resource('/currentuser',
+    { 'update': { method: 'PATCH'}});
+    }]);
 
 
 
-userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scope', function(UserSong, SearchSong, PlaylistSong, $scope) {
+userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'CurrentUser', '$scope', function(UserSong, SearchSong, PlaylistSong, CurrentUser, $scope) {
 
     // load user's songs on page upon load
     $scope.userSongs = [];
@@ -101,6 +105,21 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
     }
     $scope.newSearchSong = new SearchSong();  
 
+    $scope.updateUserLocation = function () {
+      var curUser = CurrentUser.get(function(user) {
+        user.coordinates = {
+          lat: userLat,
+          lng: userLng  
+        };
+
+        console.log(userLat);
+        console.log(userLng);
+        console.log(curUser);
+      });
+      console.log(curUser);
+
+      CurrentUser.update({}, curUser);
+    }
 
     $scope.playSong = function(key) {
       apiswf.rdio_play(key);
@@ -134,11 +153,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', '$scop
       });
     }
 
-    // $scope.updateUserLocation = function (song) {
-    //   var curUser = CurrentUser.get();
-    //   console.log (curUser);
-      
-    // }
+
 
 
 
