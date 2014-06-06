@@ -3,7 +3,8 @@ require "bcrypt"
 class User < ActiveRecord::Base
 	include ActiveModel::SecurePassword
 
-	validates :username, :email, :password, :password_confirmation, :age, :gender, presence: true
+	validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true
+
 	validates :username, :email, uniqueness: true
 	validates :username, length: { in: 4..15 } 
 	#before_save downcase username & email
