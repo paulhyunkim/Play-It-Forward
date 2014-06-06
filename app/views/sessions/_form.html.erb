@@ -3,13 +3,10 @@
 <div id="loginform">
 	<p class="formlabels">USERNAME </p>
 	  <%= form_for :session, :url => sessions_path do |f| %>
-	  <%= f.text_field :email,class: "myformcontrol" %>
+	  <%= f.text_field :username,class: "myformcontrol" %>
 	  <p class="formlabels">PASSWORD</p>
 	  <%= f.password_field :password, class: "myformcontrol" %>
 	  <%= f.submit "Login", class: "submitsign" %>
 <% end %>
 </div>
-
-
-
 
