@@ -1,6 +1,8 @@
 var userLat = null;
 var userLng = null;
 var playlistSongs = [];
+
+
 // set user coordinates upon page load
 navigator.geolocation.getCurrentPosition(function(position) { 
     userLat = position.coords.latitude;
@@ -77,6 +79,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     // load user's songs on page upon load
     $scope.userSongs = [];
     $scope.alerts = [];
+    $scope.isSongSearched = false;
 
   	UserSong.query(function(songs) {
       $scope.userSongs = songs;
@@ -101,6 +104,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       SearchSong.query({ search: searchTerm }, function(songs) {
         $scope.searchSongs = songs;
         console.log($scope.searchSongs);
+        $scope.isSongSearched = true;
       });
     }
     $scope.newSearchSong = new SearchSong();  
@@ -139,9 +143,10 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       console.log($scope.newUserSong);
       
       $scope.newUserSong.$save(function(song) {
-        $scope.userSongs.push(song)
+        $scope.userSongs.push(song);
         $scope.newUserSong = new UserSong();
       });
+
     }
 
     $scope.deleteSong = function (song) {
