@@ -70,7 +70,7 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
 userApp.factory('CurrentUser', ['$resource', function($resource) {
   return $resource('/currentusers',
     { },
-    { update: { method: 'PATCH'}});
+    { update: { method: 'PUT'}});
     }]);
 
 
