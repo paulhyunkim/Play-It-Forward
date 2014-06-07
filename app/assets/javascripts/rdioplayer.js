@@ -4,6 +4,7 @@ var lastSong = null;
 var isPlayerLoaded = false;
 console.log(isPlayerLoaded);
 var playOrPaused = 0;
+var nextSong = null;
 
 $(document).ready(function() {
   // on page load use SWFObject to load the API swf into div#apiswf
@@ -112,9 +113,9 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
   // The currently playing source changed.
   // The source metadata, including a track listing is inside playingSource.
   console.log("track changed");
-  var nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+  nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
   while (nextSong === lastSong) {
-    var nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+    nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
   }
 
 
@@ -129,6 +130,8 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
     console.log(userLat);
     console.log(userLng);
   });
+
+  geoFindMe();
 
 
 }

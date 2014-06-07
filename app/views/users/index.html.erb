@@ -33,7 +33,7 @@
                 <p class="plistsong">{{s.title}}  <br/>
                 <p class="plistartist">{{s.artist}}</p>
                 <span class="songoptions">
-                <a ng-click="playSong(s.key);">Play</a>  
+                <a ng-click="playSong(s);">Play</a>  
                 <a ng-click="deleteSong(s)">
                   <%= image_tag 'trash.png', class: "trash" %>
 
@@ -59,7 +59,7 @@
 
               
               <!-- <div id="play" class="playbutton">play</div> -->
-              <div id="play" ng-click="checkPlayState()" ng-class="{playbutton: playState == 0, pausebutton: playState == 1}">play</div>
+              <div id="play" ng-click="checkPlayState()" ng-class="{playbutton: playState == 1, pausebutton: playState == 0 || playState == 2 || playState == 3 || playState == 4}">play</div>
               <div id="next" class="nextbutton">next</div>
 
 
@@ -97,7 +97,6 @@
         <div class = "maincontent" id ="mapbody">
           <h1 class="bigtitle">Current Location:</h1><br />
           <%= image_tag 'map.png', class:"mapbutton" %>
-          <p><button onclick="geoFindMe()">Show my location</button></p>
           <div id="usermaplocation"></div>
 
        <!--    <input type="text" value="34.013678999999996" ng-model="lat"> <input type="text" value="-118.49610919999999" ng-model="lng">

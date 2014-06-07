@@ -1,6 +1,7 @@
 var userLat = null;
 var userLng = null;
 var playlistSongs = [];
+var currentSong = null;
 
 
 // set user coordinates upon page load
@@ -81,6 +82,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     $scope.userSongs = [];
     $scope.alerts = [];
     $scope.isSongSearched = false;
+    $scope.playState = playOrPaused;
 
   	UserSong.query(function(songs) {
       $scope.userSongs = songs;
@@ -93,12 +95,14 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     PlaylistSong.query(function(songs) {
       $scope.playlistSongs = songs;
       playlistSongs = songs;
-      console.log($scope.playlistSongs);
+    
+      
     });
     $scope.newPlaylistSong = new PlaylistSong();
 
     // initialize searchSongs as empty list
     $scope.searchSongs = [];
+
 
 
 
@@ -129,8 +133,10 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       
     }
 
-    $scope.playSong = function(key) {
-      apiswf.rdio_play(key);
+    $scope.playSong = function(song) {
+      apiswf.rdio_play(song.key);
+      currentSong = song;
+      console.log(currentSong);
     }
 
     $scope.saveSong = function (song) {
@@ -162,13 +168,6 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       });
     }
 
-    $scope.whichButton = function () {
-      if (playOrPaused === 0) {
-        return false;
-      } else {
-        return true;
-      }
-    }
 
     $scope.checkPlayState = function() {
       $scope.playState = playOrPaused;
