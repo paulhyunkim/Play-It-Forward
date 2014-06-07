@@ -7,23 +7,23 @@ function geoFindMe() {
   }
 
   function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    var latitude  = lastSong.user.lng;
+    var longitude = lastSong.user.lat;
 
     var img = new Image();
-    img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+    img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=8&size=300x300&sensor=false";
+
 
     output.replaceChild(img);
+    output.innerHTML = "<p></p>";
+    output.removeChild(output.childNodes[0]);
+    output.appendChild(img);
   };
 
   function error() {
     output.innerHTML = "Unable to retrieve your location";
   };
 
-  output.innerHTML = "<p>Locating…</p>";
 
   navigator.geolocation.getCurrentPosition(success, error);
 }
-

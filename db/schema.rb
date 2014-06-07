@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20140528013652) do
     t.string   "password_digest"
     t.string   "city"
     t.string   "state"
+    t.string   "lat"
+    t.string   "lng"
     t.spatial  "coordinates",     limit: {:srid=>4326, :type=>"point", :geographic=>true}
     t.datetime "created_at"
     t.datetime "updated_at"

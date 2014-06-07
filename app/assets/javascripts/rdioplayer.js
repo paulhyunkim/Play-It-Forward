@@ -3,6 +3,8 @@ var apiswf = null;
 var lastSong = null;
 var isPlayerLoaded = false;
 console.log(isPlayerLoaded);
+var playOrPaused = 0;
+var nextSong = null;
 
 $(document).ready(function() {
   // on page load use SWFObject to load the API swf into div#apiswf
@@ -22,7 +24,12 @@ $(document).ready(function() {
 
   // set up the controls
   $('#play').click(function() {
-    apiswf.rdio_play($('#play_key').val());
+    console.log(playOrPaused);
+    if (playOrPaused === 0) {
+      apiswf.rdio_play($('#play_key').val());
+    } else if (playOrPaused === 1) {
+      apiswf.rdio_pause();
+    }
   });
   $('#stop').click(function() { apiswf.rdio_stop(); });
   $('#pause').click(function() { apiswf.rdio_pause(); });
@@ -82,6 +89,7 @@ callback_object.freeRemainingChanged = function freeRemainingChanged(remaining) 
 }
 
 callback_object.playStateChanged = function playStateChanged(playState) {
+  playOrPaused = playState;
   // The playback state has changed.
   // The state can be: 0 - paused, 1 - playing, 2 - stopped, 3 - buffering or 4 - paused.
   $('#playState').text(playState);
@@ -105,9 +113,9 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
   // The currently playing source changed.
   // The source metadata, including a track listing is inside playingSource.
   console.log("track changed");
-  var nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+  nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
   while (nextSong === lastSong) {
-    var nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+    nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
   }
 
 
@@ -122,6 +130,8 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
     console.log(userLat);
     console.log(userLng);
   });
+
+  geoFindMe();
 
 
 }

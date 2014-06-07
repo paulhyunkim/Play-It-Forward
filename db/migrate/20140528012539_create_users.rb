@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration
 
       t.string :city
       t.string :state
+      t.string :lat
+      t.string :lng
 
       t.point :coordinates, :geographic => true
 
