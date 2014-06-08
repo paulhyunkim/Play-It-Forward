@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user, :except => [:new, :create]
+	before_action :authenticate_user, :except => [:new, :create, :update]
 	respond_to :json, :html
 
 	
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update_attributes(user_params)
       redirect_to users_path
     else
       render 'edit'
