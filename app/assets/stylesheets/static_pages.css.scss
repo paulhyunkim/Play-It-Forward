@@ -10,7 +10,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	border-radius: 3px !important;
 	font-size: 13px !important;
 	font-family: 'Raleway', sans-serif !important;
-	
+
 }
 
 .smallformcontrol{
@@ -22,7 +22,7 @@ src: URL('brandon_grotesque_bold.ttf')
 
 	position: absolute;
     margin-left:40px;
-	
+
 }
 
 
@@ -34,7 +34,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	font-family: 'Raleway', sans-serif !important;
 	position: absolute;
     margin-left:40px;
-	
+
 }
 
 
@@ -60,7 +60,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	font-family: 'Raleway', sans-serif !important;
 	position: absolute;
     margin-left:40px;
-	
+
 }
 
 
@@ -166,29 +166,29 @@ src: URL('brandon_grotesque_bold.ttf')
 	padding-top:100px;
 	height:710px;
 	overflow:hidden;
-	font-family: 'Brandon Grotesque Bold';	
-	text-align:center;	
+	font-family: 'Brandon Grotesque Bold';
+	text-align:center;
 }
 
 #introbox {
-	background-image: url('top1.jpg');
+	background-image: asset-url('top1.jpg');
 	background-size: cover;
 	text-align: center;
 	background-position: center center;
 	}
 
-	
+
 	#logo {
-	background-image: url('logo_left.png');
+	background-image: asset-url('logo_left.png');
 	background-size: cover;
 	width: 297.5px;
 	height: 161.5px;
 	margin: 300px auto 0;
 	display: inline-block;
-	
+
 	}
 	#homeplay {
-	background-image: url('logo_right.png');
+	background-image: asset-url('logo_right.png');
 	background-size: cover;
 	width: 85px;
 	height: 98px;
@@ -216,7 +216,7 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 #whoarewe{
-	padding-top:150px;	
+	padding-top:150px;
 	text-align:center;
 }
 
@@ -225,12 +225,12 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 #signup{
-	background-image:url('listen.jpg'); 
+	background-image:asset-url('listen.jpg');
 	background-size: cover;
 	background-position: center center;
 	background-width:100%;
 	background-height:auto;
-	
+
 }
 
 #signup h1{
@@ -239,7 +239,7 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 nav{
-	background-color: rgba(255,255,255,0.15);	
+	background-color: rgba(255,255,255,0.15);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -251,7 +251,7 @@ nav{
 		.navlogo{
 		width: 55px;
 		height: 30.16px;
-		background-image: url('logo2.png');
+		background-image: asset-url('logo2.png');
 		background-size: cover;
 		margin-top: 18px;
 		margin-left: 95px;
@@ -329,7 +329,7 @@ nav{
 	padding:20px 0;
 	text-align: center;
 	font-size:80px;
-	
+
 }
 
 #lorem2 h1{
@@ -349,7 +349,7 @@ nav{
 }
 
 #signuptitle{
-	font-family: 'Brandon Grotesque Bold';	
+	font-family: 'Brandon Grotesque Bold';
 	font-size: 90px;
 	color: white;
 	margin: 0 auto;
@@ -422,13 +422,13 @@ nav{
 	position: relative;
 	top: -37px;
 	left: -37px;
-	background-image: url('addbutton.png');
+	background-image: asset-url('addbutton.png');
 	background-size: contain;
 	width: 30px;
 	height: 30px;
 }
 .searchlinks:hover{
-	background-image: url('addbuttonhover.png');
+	background-image: asset-url('addbuttonhover.png');
 
 }
 
