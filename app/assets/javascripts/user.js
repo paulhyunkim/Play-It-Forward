@@ -70,7 +70,7 @@ userApp.factory('CurrentUser', ['$resource', function($resource) {
 
 
 
-userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'CurrentUser', '$scope', function(UserSong, SearchSong, PlaylistSong, CurrentUser, $scope) {
+userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'CurrentUser', '$scope', '$timeout', function(UserSong, SearchSong, PlaylistSong, CurrentUser, $scope, $timeout) {
 
     // load user's songs on page upon load
     $scope.userSongs = [];
@@ -134,7 +134,6 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       var curUser = CurrentUser.get(function(user) {
         user.lat = userLat;
         user.lng = userLng;
-       
         curUser.$update();
       });
     }
@@ -145,11 +144,11 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       $scope.refresh = true;
     }
 
-    $scope.addAlert = function() {
+    $scope.addAlert = function(index) {
       $scope.alerts.push({msg: "Song was Added!!"});
-      // setInterval(function(){
-      // document.getElementsByClassName('.bodybox').style.backg
-      // },3000);
+      $timeout(function(){
+        $scope.alerts.splice(index, 1);
+      },1500)
     }
 
     $scope.closeAlert = function(index) {
@@ -183,8 +182,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
 
     $scope.deleteSong = function (song) {
       song.$delete(function() {
-        position = $scope.songs.indexOf(song);
-        $scope.songs.splice(position, 1);
+        position = $scope.userSongs.indexOf(song);
+        $scope.userSongs.splice(position, 1);
       }, function(errors) {
         $scope.errors = errors.data
       });
