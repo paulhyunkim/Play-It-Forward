@@ -4,10 +4,9 @@ require "omniauth-rdio"
 
 class User < ActiveRecord::Base
 	# include ActiveModel::SecurePassword
-	# before_save { self.email = email.downcase }    
-	# before_save { self.username = username.downcase } 
-	# validates :username, :email, :age, :gender, :password, :pas presence: true, on: :create 
-	# validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true
+	# before_save { self.email = email.downcase }
+	# before_save { self.username = username.downcase }
+	# validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true, on: :create
 	# validates :username, :email, uniqueness: true
 	# validates :username, length: { in: 4..15 } 
 	# #before_save downcase username & email
@@ -42,11 +41,13 @@ class User < ActiveRecord::Base
 	  create! do |user|
 	    user.provider = auth["provider"]
 	    user.uid = auth["uid"]
-	    user.username = auth["info"]["name"]
+	    user.first_name = auth["info"]["first_name"]
+	    user.last_name = auth["info"]["last_name"]
+	    # user.gender = auth["raw_info"]["gender"]
 		end
-  	end
+	end
 
-  	def self.find_by_provider_and_uid(provider, uid)
+	def self.find_by_provider_and_uid(provider, uid)
 	  where(provider: provider, uid: uid).first
 	end
 

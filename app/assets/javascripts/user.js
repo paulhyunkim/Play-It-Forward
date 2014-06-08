@@ -4,13 +4,7 @@ var playlistSongs = [];
 var currentSong = null;
 
 
-// set user coordinates upon page load
-navigator.geolocation.getCurrentPosition(function(position) { 
-    userLat = position.coords.latitude;
-    userLng = position.coords.longitude; 
-    console.log(userLat);
-    console.log(userLng);
-  });
+
 
 var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {
@@ -83,10 +77,30 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     $scope.alerts = [];
     $scope.isSongSearched = false;
     $scope.playState = playOrPaused;
+    $scope.map = {
+        center: {
+            latitude: userLng,
+            longitude: userLat
+        },
+        zoom: 8
+    };
 
-  	UserSong.query(function(songs) {
+    // set user coordinates upon page load
+    navigator.geolocation.getCurrentPosition(function(position) { 
+      userLat = position.coords.latitude;
+      userLng = position.coords.longitude; 
+      var curUser = CurrentUser.get(function(user) {
+        user.lat = userLat;
+        user.lng = userLng;
+       
+        curUser.$update();
+        console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
+      });
+    });
+    
+
+    UserSong.query(function(songs) {
       $scope.userSongs = songs;
-      console.log($scope.userSongs);
     });
     $scope.newUserSong = new UserSong();
 
@@ -116,41 +130,35 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     }
     $scope.newSearchSong = new SearchSong();  
 
-    $scope.updateUserLocation = function () {
+    $scope.updateUserLocation = function() {
       var curUser = CurrentUser.get(function(user) {
         user.lat = userLat;
         user.lng = userLng;
        
-        console.log("attempting to update");
-        // CurrentUser.update({}, curUser);
         curUser.$update();
-        console.log("after attempt");
-        console.log(userLat);
-        console.log(userLng);
-        console.log("inside");
-        console.log(curUser);
       });
-
-      console.log("outside");
-      console.log(curUser);
     }
 
+    $scope.updateSongLocation = function() {
+      $scope.lat = userLat;
+      $scope.lng = userLng;
+      $scope.refresh = true;
+    }
 
     $scope.addAlert = function() {
       $scope.alerts.push({msg: "Song was Added!!"});
       // setInterval(function(){
       // document.getElementsByClassName('.bodybox').style.backg
       // },3000);
-    };
+    }
 
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
-    };
+    }
 
     $scope.playSong = function(song) {
       apiswf.rdio_play(song.key);
       currentSong = song;
-      console.log(currentSong);
     }
 
     $scope.saveSong = function (song) {
@@ -210,4 +218,3 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
 //   });
    
 // }])
-
