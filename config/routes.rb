@@ -8,6 +8,7 @@ PlayItForward::Application.routes.draw do
   resources :searchsongs
   resource :currentusers
 
+  
 
   resource :sessions, only: [:new, :create, :destroy]
 
@@ -16,6 +17,8 @@ PlayItForward::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   get '/songs/all' => 'songs#all'
+  get '/auth/:rdio/callback', to: 'sessions#create'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

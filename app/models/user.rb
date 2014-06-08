@@ -1,4 +1,6 @@
 require "bcrypt"
+require "omniauth"
+require "omniauth-rdio"
 
 class User < ActiveRecord::Base
 	# include ActiveModel::SecurePassword
@@ -8,15 +10,17 @@ class User < ActiveRecord::Base
 	validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true, on: :create
 
 
-	validates :username, :email, uniqueness: true
-	validates :username, length: { in: 4..15 } 
-	#before_save downcase username & email
-	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-	validates :age,  numericality: { only_integer: true, greater_than: 13, less_than: 120 }
+	# validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true
 
-	has_secure_password
-	validates :password, length: { minimum: 6 }, on: :create
+	# validates :username, :email, uniqueness: true
+	# validates :username, length: { in: 4..15 } 
+	# #before_save downcase username & email
+	# validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+	# validates :age,  numericality: { only_integer: true, greater_than: 13, less_than: 120 }
+
+	# has_secure_password
+	# validates :password, length: { minimum: 6 }, on: :create
+
 	has_many :playlists
 	has_many :songs
 
@@ -38,4 +42,21 @@ class User < ActiveRecord::Base
 	def self.search(query)
 	  where("email like ?", "%#{query}%") 
 	end
+
+	def self.create_with_omniauth(auth)
+	  create! do |user|
+	    user.provider = auth["provider"]
+	    user.uid = auth["uid"]
+	    user.username = auth["info"]["name"]
+		end
+  	end
+
+  	def self.find_by_provider_and_uid(provider, uid)
+	  where(provider: provider, uid: uid).first
+	end
+
+
+
+
+
 end

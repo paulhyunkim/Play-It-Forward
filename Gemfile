@@ -13,6 +13,8 @@ gem 'rdio_api'
 gem 'foundation-rails'
 gem 'active_model_serializers'
 gem 'angularjs-rails'
+gem 'omniauth'
+gem 'omniauth-rdio'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
