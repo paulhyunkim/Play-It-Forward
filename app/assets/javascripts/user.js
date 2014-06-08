@@ -128,10 +128,20 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
         console.log(userLng);
         console.log(curUser);
       });
-      console.log(curUser);
-
-      
+      console.log(curUser); 
     }
+
+
+    $scope.addAlert = function() {
+      $scope.alerts.push({msg: "Song was Added!!"});
+      // setInterval(function(){
+      // document.getElementsByClassName('.bodybox').style.backg
+      // },3000);
+    };
+
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
 
     $scope.playSong = function(song) {
       apiswf.rdio_play(song.key);
