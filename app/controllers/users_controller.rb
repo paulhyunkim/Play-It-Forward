@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 			flash.now[:success] = "You have succesfully signed up!"
 			redirect_to users_path
 		else
-			render 'new'
+	
 		end
 	end
 
