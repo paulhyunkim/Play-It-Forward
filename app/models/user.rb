@@ -3,7 +3,12 @@ require "omniauth"
 require "omniauth-rdio"
 
 class User < ActiveRecord::Base
-	include ActiveModel::SecurePassword
+	# include ActiveModel::SecurePassword
+	before_save { self.email = email.downcase }
+	before_save { self.username = username.downcase }
+
+	validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true, on: :create
+
 
 	# validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true
 
@@ -14,6 +19,8 @@ class User < ActiveRecord::Base
 	# validates :age,  numericality: { only_integer: true, greater_than: 13, less_than: 120 }
 
 	# has_secure_password
+	# validates :password, length: { minimum: 6 }, on: :create
+
 	has_many :playlists
 	has_many :songs
 
