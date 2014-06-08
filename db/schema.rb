@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 20140608064740) do
   add_index "songs", ["user_id"], :name => "index_songs_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
     t.integer  "age"
     t.string   "gender"

@@ -1,4 +1,3 @@
-
 <div x-ng-app="user_app" class= "userbody">
 <div x-ng-controller="UserCtrl">
 
@@ -13,10 +12,8 @@
     <ul class = "large-block-grid-3 small-block-grid-1">
       <li>
         <div class = "maincontent" id ="profilebody">
-          <h1 class ="bigtitle">Hello, <%= @current_user.username %>!</h1>
+          <h1 class ="bigtitle">Hello, <%= @current_user.first_name %>!</h1>
           <span class="smalltitle">
-          <%= @current_user.age %>, 
-          <%= @current_user.gender %>
           
           </span>
           <br /><br /><br />

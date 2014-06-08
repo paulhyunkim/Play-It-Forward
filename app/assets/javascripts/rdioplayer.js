@@ -2,7 +2,6 @@
 var apiswf = null;
 var lastSong = null;
 var isPlayerLoaded = false;
-console.log(isPlayerLoaded);
 var playOrPaused = 0;
 var nextSong = null;
 
@@ -67,8 +66,6 @@ callback_object.ready = function ready(user) {
     $('#nobody').show();
   }
 
-  console.log(user);
-
   // autoplay on load
   // apiswf.rdio_play($('#play_key').val());
 }
@@ -112,7 +109,6 @@ callback_object.playingTrackChanged = function playingTrackChanged(playingTrack,
 callback_object.playingSourceChanged = function playingSourceChanged(playingSource) {
   // The currently playing source changed.
   // The source metadata, including a track listing is inside playingSource.
-  console.log("track changed");
   nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
   while (nextSong === lastSong) {
     nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
@@ -120,16 +116,18 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
 
 
   apiswf.rdio_queue(nextSong.key);
-  console.log(nextSong.title);
+  console.log("Next song is '" + nextSong.title + "' with a key of " + nextSong.key);
   lastSong = nextSong;
 
+  // var scp = angular.element('[ng-controller="UserCtrl"]').scope();
+  // scp.updateUserLocation();
+
   // update user coordinates which each song
-  navigator.geolocation.getCurrentPosition(function(position) { 
-    userLat = position.coords.latitude;
-    userLng = position.coords.longitude; 
-    console.log(userLat);
-    console.log(userLng);
-  });
+  // navigator.geolocation.getCurrentPosition(function(position) { 
+  //   userLat = position.coords.latitude;
+  //   userLng = position.coords.longitude; 
+  //   console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
+  // });
 
   geoFindMe();
 
@@ -180,4 +178,3 @@ callback_object.updateFrequencyData = function updateFrequencyData(arrayAsString
     $(this).width(parseInt(parseFloat(arr[i])*500));
   })
 }
-
