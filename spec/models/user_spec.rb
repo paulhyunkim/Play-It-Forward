@@ -4,7 +4,7 @@ describe User do
   describe "nearby" do
   	before do
   		# POINT(longitude latitude)
-  		@me = User.create(:coordinates => "POINT(118.25 34.05)")
+  		@me = User.create(lng: 118.25, lat: 34.05)
   		@phoenix = User.create(:coordinates => "POINT(112.0667 33.45)")
   		@new_york = User.create(:coordinates => "POINT(74.0059 40.71)")
   		@san_bernadino = User.create(:coordinates => "POINT(117.3 34.1)")
