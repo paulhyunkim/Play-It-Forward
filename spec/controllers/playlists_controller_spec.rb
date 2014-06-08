@@ -1,5 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe PlaylistsController, :type => :controller do
+RSpec.describe PlaylistsongsController, :type => :controller do
 
 end

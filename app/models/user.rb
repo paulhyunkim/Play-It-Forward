@@ -6,18 +6,12 @@ class User < ActiveRecord::Base
 	# include ActiveModel::SecurePassword
 	# before_save { self.email = email.downcase }
 	# before_save { self.username = username.downcase }
-
 	# validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true, on: :create
-
-
-	# validates :username, :email, :age, :gender, :password, :password_confirmation, presence: true
-
 	# validates :username, :email, uniqueness: true
 	# validates :username, length: { in: 4..15 } 
 	# #before_save downcase username & email
 	# validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 	# validates :age,  numericality: { only_integer: true, greater_than: 13, less_than: 120 }
-
 	# has_secure_password
 	# validates :password, length: { minimum: 6 }, on: :create
 
