@@ -71,7 +71,7 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
 userApp.factory('CurrentUser', ['$resource', function($resource) {
   return $resource('/currentusers',
     { },
-    { update: { method: 'PATCH'}});
+    { 'update': { method: 'PUT'}});
     }]);
 
 
@@ -118,20 +118,34 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
 
     $scope.updateUserLocation = function () {
       var curUser = CurrentUser.get(function(user) {
-        user.coordinates = {
-          lat: userLat,
-          lng: userLng  
-        };
-
-        CurrentUser.update({}, curUser);
+        user.lat = userLat;
+        user.lng = userLng;
+       
+        console.log("attempting to update");
+        // CurrentUser.update({}, curUser);
+        curUser.$update();
+        console.log("after attempt");
         console.log(userLat);
         console.log(userLng);
+        console.log("inside");
         console.log(curUser);
       });
-      console.log(curUser);
 
-      
+      console.log("outside");
+      console.log(curUser);
     }
+
+
+    $scope.addAlert = function() {
+      $scope.alerts.push({msg: "Song was Added!!"});
+      // setInterval(function(){
+      // document.getElementsByClassName('.bodybox').style.backg
+      // },3000);
+    };
+
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
 
     $scope.playSong = function(song) {
       apiswf.rdio_play(song.key);

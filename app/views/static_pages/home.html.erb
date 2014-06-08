@@ -25,6 +25,15 @@
 		<br />
 		<h2 class="what">W h a t ' s &nbsp o n &nbsp y o u r &nbsp p l a y l i s t ? </h2>
 		
+	
+		<% if current_user %>
+		Welcome <%= current_user.username %>!
+			<%= link_to "Sign Out", signout_path, method: :delete %>
+			<% else %>
+			<%= link_to "SIGN IN HERE WITH Rdio", "/auth/rdio" %>
+		<% end %>
+
+
 	</div>
 
 	<div class = "sectionbox" id="whoarewe">

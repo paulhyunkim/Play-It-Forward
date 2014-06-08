@@ -1,5 +1,5 @@
 class CurrentusersController < ApplicationController
-	before_action :authenticate_user, :except => [:new, :create]
+	before_action :authenticate_user, :except => [:new, :create, :update]
 	respond_to :json, :html
 	def index
 		respond_with current_user
@@ -38,11 +38,13 @@ class CurrentusersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+
+   
 	end
 
 	protected
 
 	def user_params
-		params.require(:currentuser).permit(:coordinates)
+		params.require(:currentuser).permit(:coordinates, :lat, :lng)
 	end
 end

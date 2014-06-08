@@ -10,6 +10,9 @@ $(document).ready(function(){
 $(function(){ $(document).foundation(); });
 
 
+$('#loginmodal').bind('opened', function() {
+  console.log("myModal opened");
+});
 
 //Nav bar fade. Disappear by 2nd div.
 $(function(){

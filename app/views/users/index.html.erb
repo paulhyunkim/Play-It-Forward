@@ -130,7 +130,6 @@
 
 <br>
   <div id="searchModal" class="reveal-modal" data-reveal >
-
     <div class="row">
       <div class="large-6 columns">
         <div class="row collapse">
@@ -148,12 +147,12 @@
     
     <div class="resultsection">
     <div ng-show="isSongSearched">RESULTS</div>
-    <a ng-click="saveSong(s)">
+      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <a ng-click="saveSong(s); addAlert()">
       <div x-ng-repeat="s in searchSongs" class="searchresults">
         <p id="songsearchtitle">{{s.name}}</p> 
         <p id="artistsearchtitle">{{s.artist}} </p>
     </a>
-      
       </div>
  
     </div>
@@ -161,6 +160,7 @@
   </div>
 
 
+ 
 <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
   <div class="container" id="trialplayer">
