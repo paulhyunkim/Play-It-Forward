@@ -53,6 +53,14 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :development, :test do    
+group :development, :test do
 	gem "rspec-rails"
 end
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-postgresql', '~> 3.0'
+  gem 'capistrano-rvm'
+end
+
