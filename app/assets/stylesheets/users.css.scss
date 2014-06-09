@@ -30,9 +30,33 @@ html,body,.userbody{
 	background: linear-gradient(#5c243b, #302c48); /* Standard syntax (must be last) */
 }
 
+#logout a {
+	color:white;
+	-webkit-transition: all 300ms;
+}
+
+#logout a:hover {
+	color:black
+}
+
 
 button{
 	font-size:40%;
+}
+
+
+#heartSong{
+	height:85px;
+	width:40px;
+	background-image:asset-url('wheart.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	color:transparent;
+	margin-right: 20px;
+}
+
+#heartSong:hover{
+	background-image:asset-url('whearthov.png');
 }
 
 #usernavbar{
@@ -64,7 +88,7 @@ button{
 }
 
 .bodybox{
-	height:600px;
+	height:auto;
 	margin:20px;
 }
 
@@ -93,7 +117,7 @@ button{
 	background-color: rgba(255,255,255,0.2);
 	overflow-y:scroll;
 	height:350px;
-	padding:20px;
+	padding:14px 18px;
 }
 
 .albumphoto {
@@ -112,6 +136,7 @@ button{
 	text-align: center;
 	padding:5px;
 	width:100%;
+	margin-bottom: 15px;
 }
 
 .testplayer div{
@@ -120,8 +145,14 @@ button{
 }
 
 .songproperties{
-	font-size: 15px;
+	font-size: 20px;
+	p {
+		margin-bottom: 10px;
+		text-align: center;
+	}
 }
+
+
 
 .mapbutton {
 	float:right;
@@ -145,8 +176,7 @@ button{
 	margin-left: 10px;
 }
 .songartistplaylist{
-	margin-bottom: 10px;
-	padding: 15px;
+	padding: 7px;
 
 }
 .songartistplaylist:hover{
@@ -236,6 +266,17 @@ button{
 
 }
 
+
+@media only screen and (max-width: 444px) {
+
+#navlogo{
+	background-image:asset-url('playitforward.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height:40px;
+	width:200px;
+	}
+}
 
 
 
