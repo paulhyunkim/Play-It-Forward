@@ -179,15 +179,24 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
         $scope.newUserSong = new UserSong();
       });
 
+      song.$delete(function() {
+        position = $scope.searchSongs.indexOf(song);
+        $scope.userSongs.splice(position, 1);
+        console.log("delete");
+      }, function(errors) {
+        $scope.errors = errors.data
+      });
     }
 
     $scope.deleteSong = function (song) {
       song.$delete(function() {
-        position = $scope.songs.indexOf(song);
-        $scope.songs.splice(position, 1);
+        position = $scope.userSongs.indexOf(song);
+        $scope.userSongs.splice(position, 1);
+        console.log("delete");
       }, function(errors) {
         $scope.errors = errors.data
       });
+     
     }
 
 

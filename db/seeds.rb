@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(lat: "40.7127", lng: "74.0059", city: "New York City")
+User.create(lat: "74.0059", lng: "40.7127", city: "New York City")
 User.create(lat: "35.6895", lng: "139.6917", city: "Tokyo")
 User.create(lat: "31.2000", lng: "121.5000", city: "Shanghai")
 User.create(lat: "48.8567", lng: "2.3508", city: "Paris" )

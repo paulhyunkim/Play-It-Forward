@@ -1,13 +1,12 @@
 PlayItForward::Application.routes.draw do
 
-  root 'static_pages#home'
+  root 'users#index'
   resources :users 
   resources :songs
   resources :playlistsongs
   resources :usersongs
   resources :searchsongs
   resource :currentusers
-
   
 
   resource :sessions, only: [:new, :create, :destroy]
@@ -18,6 +17,7 @@ PlayItForward::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   get '/songs/all' => 'songs#all'
   get '/auth/:rdio/callback', to: 'sessions#create'
+  get '/welcome', to: 'static_pages#home', via: 'get'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
