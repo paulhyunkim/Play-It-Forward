@@ -6,9 +6,16 @@
 
 		<div class="cl-effect-13">
 		
-		<h1 class="cl-effect-13"><a href="#" data-reveal-id="loginmodal">LOG IN</a></h1>
-		<h1 class="cl-effect-13"><a href="#" data-reveal-id="myModal">SIGNUP</a></h1>
+<!-- 		<h1 class="cl-effect-13"><a href="#" data-reveal-id="loginmodal">LOG IN</a></h1>
+		<h1 class="cl-effect-13"><a href="#" data-reveal-id="myModal">SIGNUP</a></h1> -->
+			<% if current_user %>
+		Welcome <%= current_user.first_name %>!
+			<%= link_to "Sign Out", signout_path, method: :delete %>
+			<% else %>
+			<%= link_to "SIGN IN HERE WITH Rdio", "/auth/rdio" %>
+		<% end %>
 
+		
 	
 		<a href="#whoarewe" class="cl-effect-13">HOW IT WORKS</a>
 		
@@ -26,12 +33,7 @@
 		<h2 class="what">W h a t ' s &nbsp o n &nbsp y o u r &nbsp p l a y l i s t ? </h2>
 		
 	
-		<% if current_user %>
-		Welcome <%= current_user.first_name %>!
-			<%= link_to "Sign Out", signout_path, method: :delete %>
-			<% else %>
-			<%= link_to "SIGN IN HERE WITH Rdio", "/auth/rdio" %>
-		<% end %>
+	
 
 
 	</div>
@@ -84,6 +86,8 @@
   <%= render partial: 'users/form', :controller=>"users", :action =>"new" %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
+
 
 <div id="loginmodal" class="reveal-modal" data-reveal>
   <%= render partial: 'sessions/form', :controller=>"sessions", :action =>"new" %>
