@@ -62,7 +62,8 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
     {update: { method: 'PATCH'}});
     }]);
 
-// https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCqXUnMxdZec-6WHjEaOxXrnp1NbR-eszs
+// https://maps.googleapis.com/maps/api/geocode/json?latlng=34.0610788,-118.44307019999998&key=AIzaSyCqXUnMxdZec-6WHjEaOxXrnp1NbR-eszs
+
 
 userApp.factory('CurrentUser', ['$resource', function($resource) {
   return $resource('/currentusers',
@@ -101,8 +102,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
                     user.lat = userLat;
                     user.lng = userLng;
                     user.coordinates = "POINT(" + userLng + " " + userLat + ")";
-                    user.city = results[0].address_components[4].long_name;
-                    user.state = results[0].address_components[6].long_name;
+                    user.city = results[0].address_components[3].long_name;
+                    user.state = results[0].address_components[5].long_name;
                     curUser.$update();
                     console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
                 } else {
@@ -202,7 +203,26 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
 
       position = $scope.searchSongs.indexOf(song);
       $scope.searchSongs.splice(position, 1);
-        
+
+    }
+
+    $scope.likeSong = function () {
+      console.log(currentSong);
+      $scope.newUserSong = new UserSong({
+        key: currentSong.key,
+        artist: currentSong.artist,
+        title: currentSong.title,
+        album: currentSong.album,
+        duration: currentSong.duration,
+        is_explicit: currentSong.is_explicit,
+        image_url: currentSong.image_url
+      });
+      console.log($scope.newUserSong);
+      
+      $scope.newUserSong.$save(function(song) {
+        $scope.userSongs.push(song);
+        $scope.newUserSong = new UserSong();
+      });
     }
 
     $scope.deleteSong = function (song) {

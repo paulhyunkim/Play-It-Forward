@@ -30,9 +30,33 @@ html,body,.userbody{
 	background: linear-gradient(#5c243b, #302c48); /* Standard syntax (must be last) */
 }
 
+#logout a {
+	color:white;
+	-webkit-transition: all 300ms;
+}
+
+#logout a:hover {
+	color:black
+}
+
 
 button{
 	font-size:40%;
+}
+
+
+#heartSong{
+	height:85px;
+	width:40px;
+	background-image:asset-url('wheart.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	color:transparent;
+	margin-right: 20px;
+}
+
+#heartSong:hover{
+	background-image:asset-url('whearthov.png');
 }
 
 #usernavbar{
@@ -242,6 +266,17 @@ button{
 
 }
 
+
+@media only screen and (max-width: 444px) {
+
+#navlogo{
+	background-image:asset-url('playitforward.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height:40px;
+	width:200px;
+	}
+}
 
 
 

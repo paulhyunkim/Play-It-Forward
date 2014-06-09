@@ -53,6 +53,7 @@
 
             <div class="testplayer">
               <!-- <div id="play" class="playbutton">play</div> -->
+              <div id="heartSong" ng-click="likeSong()">heart</div>
               <div id="play" ng-click="checkPlayState()" ng-class="{playbutton: playState == 1, pausebutton: playState == 0 || playState == 2 || playState == 3 || playState == 4}">play</div>
               <div id="next" class="nextbutton">next</div>
            </div>
