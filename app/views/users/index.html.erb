@@ -33,7 +33,7 @@
                 <a ng-click="playSong(s);">Play</a>  
                 <a ng-click="deleteSong(s)">
                   <%= image_tag 'trash.png', class: "trash" %>
-
+                  
                 </a>
                 </span>
               </div>
@@ -52,16 +52,9 @@
             </div>
 
             <div class="testplayer">
-
-
-              
               <!-- <div id="play" class="playbutton">play</div> -->
               <div id="play" ng-click="checkPlayState()" ng-class="{playbutton: playState == 1, pausebutton: playState == 0 || playState == 2 || playState == 3 || playState == 4}">play</div>
               <div id="next" class="nextbutton">next</div>
-
-
-
-
            </div>
 
            
@@ -81,8 +74,6 @@
 
                   <p><span  id="artist"></span></p><br />
                   <p class="playtrack"><span  id="track"></span> </p>
-
-                  
                </div>
             </div>
         </li> 
@@ -142,19 +133,18 @@
 
     <ol><br/><br/>
     
-    <div class="resultsection">
-    <div ng-show="isSongSearched">RESULTS</div>
-      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <a ng-click="saveSong(s); addAlert()">
-      <div x-ng-repeat="s in searchSongs" class="searchresults">
-        <p id="songsearchtitle">{{s.name}}</p> 
-        <p id="artistsearchtitle">{{s.artist}} </p>
-    </a>
+      <div class="resultsection">
+        <div ng-show="isSongSearched">RESULTS</div>
+          <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>    
+          <a ng-click="saveSong(s); addAlert()">
+          <div x-ng-repeat="s in searchSongs" class="searchresults">
+            <p id="songsearchtitle">{{s.name}}</p> 
+            <p id="artistsearchtitle">{{s.artist}} </p>
+          </a>
+        </div>
       </div>
- 
+      <a class="close-reveal-modal">&#215;</a>
     </div>
-       <a class="close-reveal-modal">&#215;</a>
-  </div>
 
 
  
