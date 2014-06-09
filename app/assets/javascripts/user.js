@@ -92,6 +92,7 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       var curUser = CurrentUser.get(function(user) {
         user.lat = userLat;
         user.lng = userLng;
+        user.coordinates = "POINT(" + userLng + " " + userLat + ")";
        
         curUser.$update();
         console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);

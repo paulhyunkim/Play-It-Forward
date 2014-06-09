@@ -4,11 +4,15 @@ before_action :set_song, :only => [:edit, :update, :destroy]
 	respond_to :html, :json
 
 	def index
-    # @nearby_users = current_user.nearby(5)
-    # @songs = Song.where(:user_id => @nearby_users.map(&:id))
+    @nearby_users = current_user.nearby(2)
+    @songs = Song.where(:user_id => @nearby_users.map(&:id))
     # @current_user_songs = current_user.songs.all
     # @songs = Song.all
-    @songs = Song.all
+    current_user.songs.each { |s| 
+    	@songs << s
+    }
+    
+
     respond_with(@songs)
   end
 
