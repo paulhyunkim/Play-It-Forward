@@ -4,6 +4,7 @@
 	<nav class="nav">
 		<%= link_to( image_tag("logo2.png", class: "homebutton"), users_path )%>
 		<div class="cl-effect-13">
+
 			<% if current_user %>
 				<%= link_to "SIGN OUT", signout_path, method: :delete, class: "cl-effect-13" %>
 				<% else %>
@@ -12,6 +13,7 @@
 			<a href="#whoarewe" class="cl-effect-13">HOW IT WORKS</a>
 			<a href="#whoarewe2" class="cl-effect-13">PINK</a>
 			<span class="cl-effect-13">ABOUT</span>
+
 	 	</div>
 		
 	</nav>
@@ -24,8 +26,7 @@
 		<br />
 		<h2 class="what">W h a t ' s &nbsp o n &nbsp y o u r &nbsp p l a y l i s t ? </h2>
 		
-	
-	
+
 
 	</div>
 

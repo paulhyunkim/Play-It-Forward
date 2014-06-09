@@ -36,7 +36,7 @@ $(document).ready(function() {
   $('#next').click(function() { apiswf.rdio_next(); });
 });
 // Set a starter image
-$('#art').attr('src', 'assets/albumdefault.png');
+$('#art').attr('src', "<%= asset_path('albumdefault.png') %>");
 
 
 // the global callback object
@@ -102,7 +102,7 @@ callback_object.playingTrackChanged = function playingTrackChanged(playingTrack,
     $('#artist').text(playingTrack['artist']);
     $('#art').attr('src', playingTrack['icon']);
   } else {
-    $('#art').attr('src', 'assets/heart.png');
+    $('#art').attr('src', "<%= asset_path('heart.png') %>");
   }
 }
 
@@ -123,9 +123,9 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
   // scp.updateUserLocation();
 
   // update user coordinates which each song
-  // navigator.geolocation.getCurrentPosition(function(position) { 
+  // navigator.geolocation.getCurrentPosition(function(position) {
   //   userLat = position.coords.latitude;
-  //   userLng = position.coords.longitude; 
+  //   userLng = position.coords.longitude;
   //   console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
   // });
 
