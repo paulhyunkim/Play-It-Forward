@@ -204,6 +204,24 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       $scope.searchSongs.splice(position, 1); 
     }
 
+    $scope.likeSong = function () {
+      $scope.newUserSong = new UserSong({
+        key: currentSong.key,
+        artist: currentSong.artist,
+        title: currentSong.name,
+        album: currentSong.album,
+        duration: currentSong.duration,
+        is_explicit: currentSong.isExplicit,
+        image_url: currentSong.icon400
+      });
+      console.log($scope.newUserSong);
+      
+      $scope.newUserSong.$save(function(song) {
+        $scope.userSongs.push(song);
+        $scope.newUserSong = new UserSong();
+      });
+    }
+
     $scope.deleteSong = function (song) {
       song.$delete(function() {
         position = $scope.userSongs.indexOf(song);
