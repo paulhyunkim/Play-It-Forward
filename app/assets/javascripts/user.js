@@ -64,6 +64,7 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
 
 // https://maps.googleapis.com/maps/api/geocode/json?latlng=34.0610788,-118.44307019999998&key=AIzaSyCqXUnMxdZec-6WHjEaOxXrnp1NbR-eszs
 
+
 userApp.factory('CurrentUser', ['$resource', function($resource) {
   return $resource('/currentusers',
     { },
@@ -201,7 +202,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       console.log("before delete");
 
       position = $scope.searchSongs.indexOf(song);
-      $scope.searchSongs.splice(position, 1); 
+      $scope.searchSongs.splice(position, 1);
+
     }
 
     $scope.deleteSong = function (song) {
