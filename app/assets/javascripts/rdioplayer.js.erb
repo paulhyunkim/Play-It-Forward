@@ -159,6 +159,7 @@ callback_object.positionChanged = function positionChanged(position) {
     seconds = Math.round(position % 60);
   }
 
+
   var totalTime = currentTrack['duration'];
   if (totalTime % 60 < 10) {
     totalSeconds = "0" + (totalTime % 60);
@@ -167,6 +168,7 @@ callback_object.positionChanged = function positionChanged(position) {
   }
 
   $('#position').text(Math.floor(Math.round(position)/60) + ":" + seconds + " / " + Math.floor(Math.round(totalTime)/60) + ":" + totalSeconds);
+
 
   }
 
