@@ -10,6 +10,13 @@ html,body,.userbody{
 	margin: 0px;
 }
 
+.homebutton{
+	width: 67px;
+	height: 38px;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
 .userbody {
 	width:100%;
 	overflow: auto;
@@ -120,13 +127,16 @@ button{
 	float:right;
 	width: 50px;
 	height: auto;
-	top: -90px;
+	position: relative;
+	top: -50px;
 }
 
 #usermaplocation{
 	margin: 0 auto !important;
 }
 .plistsong{
+	color: white;
+
 
 }
 .plistartist{
@@ -134,9 +144,17 @@ button{
 	color: #C0C0C0;
 	margin-left: 10px;
 }
-.songinlist{
+.songartistplaylist{
 	margin-bottom: 10px;
+	padding: 15px;
+
 }
+.songartistplaylist:hover{
+	background-color: rgba(0,0,0,0.2);
+	border: .4px solid black;
+	border-radius: 2px;
+}
+
 
 .songoptions {
 	color:white !important;
@@ -162,6 +180,7 @@ button{
 	position: relative;
 	top: -30px;
 	height: 18px;
+	margin-right: 10px;
 }
 
 .playbutton{

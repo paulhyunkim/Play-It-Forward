@@ -2,16 +2,16 @@
 
 <div id ="container">
 	<nav class="nav">
-		<a href="#introbox"><div class="navlogo"></div></a>
-
+		<%= link_to( image_tag("logo2.png", class: "homebutton"), users_path )%>
 		<div class="cl-effect-13">
-		
-		<h1 class="cl-effect-13"><a href="#" data-reveal-id="loginmodal">LOG IN</a></h1>
-		<h1 class="cl-effect-13"><a href="#" data-reveal-id="myModal">SIGNUP</a></h1>
-
-	
-		<a href="#whoarewe" class="cl-effect-13">HOW IT WORKS</a>
-		
+			<% if current_user %>
+				<%= link_to "SIGN OUT", signout_path, method: :delete, class: "cl-effect-13" %>
+				<% else %>
+				<%= link_to "SIGN IN", "/auth/rdio", class: "cl-effect-13" %>
+			<% end %>
+			<a href="#whoarewe" class="cl-effect-13">HOW IT WORKS</a>
+			<a href="#whoarewe2" class="cl-effect-13">PINK</a>
+			<span class="cl-effect-13">ABOUT</span>
 	 	</div>
 		
 	</nav>
@@ -19,20 +19,13 @@
 	<div class="sectionbox" id ="introbox">
 		
 
-
 		<div class="mainlogo" id="logo"></div>
 		<div class="mainlogo" id="homeplay"></div>
 		<br />
 		<h2 class="what">W h a t ' s &nbsp o n &nbsp y o u r &nbsp p l a y l i s t ? </h2>
 		
 	
-		<% if current_user %>
-		Welcome <%= current_user.first_name %>!
-			<%= link_to "Sign Out", signout_path, method: :delete %>
-			<% else %>
-			<%= link_to "SIGN IN HERE WITH Rdio", "/auth/rdio" %>
-		<% end %>
-
+	
 
 	</div>
 
@@ -61,17 +54,50 @@
 			</li>
 		</ul>
 	</div>
+<div class = "sectionbox" id="whoarewe2">
+		<ul class ="large-block-grid-3 small-block-grid-1">
+			<li>
+				<div id = "lorem1">
+					<h1>From us To You</h1>
+					<h3>We built this shit from scratch</h3>
 
+				</div>
+			</li>
+
+			 <li>
+			 	<div id = "lorem2">
+				<h1>How it Works!</h1>
+					<h3>Share music anonymously!</h3>
+				</div>
+			</li>
+
+			<li>
+			 	<div id = "lorem3">
+				<h1>Email Us!</h1>
+					<h3>wdi56@gmail.com!</h3>
+				</div>
+			</li>
+		</ul>
+	</div>
 
 
 	<div class = "sectionbox" id="signup">
 		
-			<div class="getstartedtext">
-			<a href="#" data-reveal-id="myModal">
-			<h1 id="getstartedhome">GET STARTED</h1>
-
-			</a>
+			<div class="getstartedbox">
+			
+			<p>Start playing it forward with a Rdio account.</p>
+			<br />
+				<div class="getstartedtext">
+					<a href="https://www.rdio.com/account/signup/">
+						<h1 id="getstartedhome">GET <%= image_tag "rdio.png" %></h1>
+					</a>
+				</div>
+				
 			</div>
+	
+
+
+
 
 	</div>
 
@@ -80,16 +106,3 @@
 
 
 
-<div id="myModal" class="reveal-modal" data-reveal>
-  <%= render partial: 'users/form', :controller=>"users", :action =>"new" %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-
-
-<div id="loginmodal" class="reveal-modal" data-reveal>
-  <%= render partial: 'sessions/form', :controller=>"sessions", :action =>"new" %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-  

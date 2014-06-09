@@ -183,8 +183,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
 
     $scope.deleteSong = function (song) {
       song.$delete(function() {
-        position = $scope.songs.indexOf(song);
-        $scope.songs.splice(position, 1);
+        position = $scope.userSongs.indexOf(song);
+        $scope.userSongs.splice(position, 1);
       }, function(errors) {
         $scope.errors = errors.data
       });
@@ -195,7 +195,6 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       $scope.playState = playOrPaused;
       console.log($scope.playState);
     }
-
 
 
 
