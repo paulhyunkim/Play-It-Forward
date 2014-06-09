@@ -51,8 +51,8 @@ userApp.factory('UserSong', ['$resource', function($resource) {
     }]);
 
 userApp.factory('SearchSong', ['$resource', function($resource) {
-  return $resource('/searchsongs/:id',
-    {id: '@id'},
+  return $resource('/searchsongs',
+    { },
     {update: { method: 'PATCH'}});
     }]);
 
@@ -178,13 +178,11 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
         $scope.newUserSong = new UserSong();
       });
 
-      song.$delete(function() {
-        position = $scope.searchSongs.indexOf(song);
-        $scope.userSongs.splice(position, 1);
-        console.log("delete");
-      }, function(errors) {
-        $scope.errors = errors.data
-      });
+      console.log("before delete");
+
+      position = $scope.searchSongs.indexOf(song);
+      $scope.searchSongs.splice(position, 1);
+        
     }
 
     $scope.deleteSong = function (song) {

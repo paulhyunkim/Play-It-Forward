@@ -49,6 +49,17 @@ class SearchsongsController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def destroy
+		@song = Song.find(params[:id])
+    @song.destroy
+
+    respond_to do |format|
+      format.html { redirect_to songs_path }
+      format.json { render json: { head: :ok } }
+    end
+  end
+
+
 protected
 
 	def user_params

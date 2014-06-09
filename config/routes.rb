@@ -18,6 +18,8 @@ PlayItForward::Application.routes.draw do
   get '/songs/all' => 'songs#all'
   get '/auth/:rdio/callback', to: 'sessions#create'
   get '/welcome', to: 'static_pages#home', via: 'get'
+  
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
