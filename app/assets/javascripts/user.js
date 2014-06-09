@@ -62,12 +62,13 @@ userApp.factory('PlaylistSong', ['$resource', function($resource) {
     {update: { method: 'PATCH'}});
     }]);
 
+// https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCqXUnMxdZec-6WHjEaOxXrnp1NbR-eszs
+
 userApp.factory('CurrentUser', ['$resource', function($resource) {
   return $resource('/currentusers',
     { },
     { 'update': { method: 'PUT'}});
     }]);
-
 
 
 userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'CurrentUser', '$scope', '$timeout', function(UserSong, SearchSong, PlaylistSong, CurrentUser, $scope, $timeout) {
@@ -90,12 +91,30 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
       userLat = position.coords.latitude;
       userLng = position.coords.longitude; 
       var curUser = CurrentUser.get(function(user) {
-        user.lat = userLat;
-        user.lng = userLng;
-        user.coordinates = "POINT(" + userLng + " " + userLat + ")";
-       
-        curUser.$update();
-        console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
+        
+
+        var geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(userLat, userLng);
+        geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    user.lat = userLat;
+                    user.lng = userLng;
+                    user.coordinates = "POINT(" + userLng + " " + userLat + ")";
+                    user.city = results[0].address_components[4].long_name;
+                    user.state = results[0].address_components[6].long_name;
+                    curUser.$update();
+                    console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
+                } else {
+                    element.text('Location not found');
+                }
+            } else {
+                element.text('Geocoder failed due to: ' + status);
+            }
+        });
+
+
+        
       });
     });
     
