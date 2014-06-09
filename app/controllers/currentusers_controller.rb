@@ -45,6 +45,6 @@ class CurrentusersController < ApplicationController
 	protected
 
 	def user_params
-		params.require(:currentuser).permit(:coordinates, :lat, :lng)
+		params.require(:currentuser).permit(:username, :email, :age, :gender, :city, :state, :coordinates, :lng, :lat)
 	end
 end
