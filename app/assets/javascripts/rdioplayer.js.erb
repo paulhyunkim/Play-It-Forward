@@ -3,7 +3,8 @@ var apiswf = null;
 var lastSong = null;
 var isPlayerLoaded = false;
 var playOrPaused = 0;
-var nextSong = null;
+var nextSong = "";
+var currentTrack = "";
 
 $(document).ready(function() {
   // on page load use SWFObject to load the API swf into div#apiswf
@@ -104,6 +105,8 @@ callback_object.playingTrackChanged = function playingTrackChanged(playingTrack,
   } else {
     $('#art').attr('src', "<%= asset_path('heart.png') %>");
   }
+
+  currentTrack = playingTrack;
 }
 
 callback_object.playingSourceChanged = function playingSourceChanged(playingSource) {
@@ -155,7 +158,17 @@ callback_object.positionChanged = function positionChanged(position) {
   } else {
     seconds = Math.round(position % 60);
   }
-  $('#position').text(Math.floor(Math.round(position)/60) + ":" + seconds);
+
+
+  var totalTime = currentTrack['duration'];
+  if (totalTime % 60 < 10) {
+    totalSeconds = "0" + (totalTime % 60);
+  } else {
+    totalSeconds = totalTime % 60;
+  }
+
+  $('#position').text(Math.floor(Math.round(position)/60) + ":" + seconds + " / " + Math.floor(Math.round(totalTime)/60) + ":" + totalSeconds);
+
 
   }
 

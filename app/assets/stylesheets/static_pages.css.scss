@@ -226,6 +226,15 @@ src: URL('brandon_grotesque_bold.ttf')
 .sectionbox {
 	padding-top:100px;
 	height:710px;
+	background-color: #5c243b;
+	overflow:hidden;
+	font-family: 'Brandon Grotesque Bold';
+	text-align:center;
+}
+.inbetween {
+	padding-top:100px;
+	padding-bottom:70px;
+	height:auto;
 	overflow:hidden;
 	font-family: 'Brandon Grotesque Bold';
 	text-align:center;
@@ -279,10 +288,17 @@ src: URL('brandon_grotesque_bold.ttf')
 #whoarewe{
 	padding-top:150px;
 	text-align:center;
+	background-position: center center;
 }
 #whoarewe2{
 	background-image: url('div2.jpg');
 	background-size: cover;
+	background-position: center center;
+}
+#whoarewe3{
+	padding-top:150px;
+	text-align:center;
+	background-position: center center;
 }
 
 
