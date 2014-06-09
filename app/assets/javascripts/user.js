@@ -198,7 +198,6 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
 
 
 
-
 }]);
 
 
