@@ -10,7 +10,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	border-radius: 3px !important;
 	font-size: 13px !important;
 	font-family: 'Raleway', sans-serif !important;
-	
+
 }
 
 .smallformcontrol{
@@ -22,7 +22,7 @@ src: URL('brandon_grotesque_bold.ttf')
 
 	position: absolute;
     margin-left:40px;
-	
+
 }
 
 
@@ -34,7 +34,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	font-family: 'Raleway', sans-serif !important;
 	position: absolute;
     margin-left:40px;
-	
+
 }
 
 
@@ -60,7 +60,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	font-family: 'Raleway', sans-serif !important;
 	position: absolute;
     margin-left:40px;
-	
+
 }
 
 
@@ -107,24 +107,39 @@ src: URL('brandon_grotesque_bold.ttf')
 	font-family: 'Raleway', sans-serif !important;
 }
 
+.getstartedbox{
+	position: relative;
+	font-family: 'Raleway', sans-serif !important;
+	width: 400px;
+	height: 300px;
+	float: right;
+	margin-right:150px;
+	margin-top: 200px;
+	text-align: center;
+}
+
+.getstartedbox h1{
+	font-size: 10px;
+}
+
 .getstartedtext{
 	background-color: rgba(255,255,255,0.5);
 	border: 1px solid black;
 	border-radius: 15px;
-	position: relative;
-	width: 200px;
-	height: 40px;
+	width: 110px;
+	height: 70px;
 	padding: 10px;
-	float: right;
-	margin-right: 200px;
+	margin: 0 auto;
 }
 
 .getstartedtext:hover{
-	border: 2px solid black;
+	border: 1.5px solid black;
+	background-color: rgba(255,255,255,0.3);
 }
 
 #getstartedhome{
-	font-size: 20px !important;
+	margin-bottom: 15px;
+	font-size: 15px !important;
 	font-family: 'Raleway', sans-serif !important;
 }
 
@@ -166,29 +181,29 @@ src: URL('brandon_grotesque_bold.ttf')
 	padding-top:100px;
 	height:710px;
 	overflow:hidden;
-	font-family: 'Brandon Grotesque Bold';	
-	text-align:center;	
+	font-family: 'Brandon Grotesque Bold';
+	text-align:center;
 }
 
 #introbox {
-	background-image: url('top1.jpg');
+	background-image: asset-url('top1.jpg');
 	background-size: cover;
 	text-align: center;
 	background-position: center center;
 	}
 
-	
+
 	#logo {
-	background-image: url('logo_left.png');
+	background-image: asset-url('logo_left.png');
 	background-size: cover;
 	width: 297.5px;
 	height: 161.5px;
 	margin: 300px auto 0;
 	display: inline-block;
-	
+
 	}
 	#homeplay {
-	background-image: url('logo_right.png');
+	background-image: asset-url('logo_right.png');
 	background-size: cover;
 	width: 85px;
 	height: 98px;
@@ -216,21 +231,25 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 #whoarewe{
-	padding-top:150px;	
+	padding-top:150px;
 	text-align:center;
 }
+#whoarewe2{
+	background-color: pink;
+}
+
 
 #whoarewe h1{
 	font-size: 50px;
 }
 
 #signup{
-	background-image:url('listen.jpg'); 
+	background-image:asset-url('listen.jpg');
 	background-size: cover;
 	background-position: center center;
 	background-width:100%;
 	background-height:auto;
-	
+
 }
 
 #signup h1{
@@ -239,7 +258,7 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 
 nav{
-	background-color: rgba(255,255,255,0.15);	
+	background-color: rgba(255,255,255,0.15);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -251,7 +270,7 @@ nav{
 		.navlogo{
 		width: 55px;
 		height: 30.16px;
-		background-image: url('logo2.png');
+		background-image: asset-url('logo2.png');
 		background-size: cover;
 		margin-top: 18px;
 		margin-left: 95px;
@@ -267,7 +286,7 @@ nav{
 	display: inline-block;
 	float:right;
 	margin-right: 15px;
-	margin-top: 10px;
+	margin-top: 15px;
 }
 .cl-effect-13 a {
 	-webkit-transition: color 0.3s;
@@ -329,7 +348,7 @@ nav{
 	padding:20px 0;
 	text-align: center;
 	font-size:80px;
-	
+
 }
 
 #lorem2 h1{
@@ -349,7 +368,7 @@ nav{
 }
 
 #signuptitle{
-	font-family: 'Brandon Grotesque Bold';	
+	font-family: 'Brandon Grotesque Bold';
 	font-size: 90px;
 	color: white;
 	margin: 0 auto;
@@ -422,14 +441,24 @@ nav{
 	position: relative;
 	top: -37px;
 	left: -37px;
-	background-image: url('addbutton.png');
+	background-image: asset-url('addbutton.png');
 	background-size: contain;
 	width: 30px;
 	height: 30px;
 }
 .searchlinks:hover{
-	background-image: url('addbuttonhover.png');
+	background-image: asset-url('addbuttonhover.png');
 
 }
 
+.songartistplaylist{
+	max-width: 275px;
+	height:  auto;
+}
 
+#getstartedhome img{
+	width: 60px;
+
+	position: relative;
+	top: 4px;
+}

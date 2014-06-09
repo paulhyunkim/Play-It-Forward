@@ -72,6 +72,25 @@ $(window).on('scroll', function(){
     });
   });
 
+//Scroll to third div
+  $(document).ready(function(){
+    $('a[href="#whoarewe2"]').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+      && location.hostname == this.hostname) {
+        var $target = $(this.hash);
+        $target = $target.length && $target
+        || $('[name=' + this.hash.slice(1) +']');
+        if ($target.length) {
+          var targetOffset = $target.offset().top;
+          $('html,body')
+          .animate({scrollTop: targetOffset}, 1000);
+         return false;
+        }
+      }
+    });
+  });
+
+
 //Scroll to bottom div
   $(document).ready(function(){
     $('a[href="#signup"]').click(function() {

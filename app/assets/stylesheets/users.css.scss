@@ -10,6 +10,13 @@ html,body,.userbody{
 	margin: 0px;
 }
 
+.homebutton{
+	width: 67px;
+	height: 38px;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
 .userbody {
 	width:100%;
 	overflow: auto;
@@ -45,7 +52,7 @@ button{
 
 
 #navlogo{
-	background-image:url('playitforward.png');
+	background-image:asset-url('playitforward.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	height:50px;
@@ -66,7 +73,7 @@ button{
 	font-family:'Raleway', sans-serif;
 	height:530px;
 	padding:25px 20px 20px 20px;
-	color:white;	
+	color:white;
 }
 
 
@@ -120,13 +127,16 @@ button{
 	float:right;
 	width: 50px;
 	height: auto;
-	top: -90px;
+	position: relative;
+	top: -50px;
 }
 
 #usermaplocation{
 	margin: 0 auto !important;
 }
 .plistsong{
+	color: white;
+
 
 }
 .plistartist{
@@ -134,9 +144,17 @@ button{
 	color: #C0C0C0;
 	margin-left: 10px;
 }
-.songinlist{
+.songartistplaylist{
 	margin-bottom: 10px;
+	padding: 15px;
+
 }
+.songartistplaylist:hover{
+	background-color: rgba(0,0,0,0.2);
+	border: .4px solid black;
+	border-radius: 2px;
+}
+
 
 .songoptions {
 	color:white !important;
@@ -148,7 +166,7 @@ button{
 .addnewsong{
 	float: right;
 	margin-top: -25px;
-	background-image: url('addtext.png');
+	background-image: asset-url('addtext.png');
 	background-size: contain;
 	width: 170px;
 	height: 24px;
@@ -162,10 +180,11 @@ button{
 	position: relative;
 	top: -30px;
 	height: 18px;
+	margin-right: 10px;
 }
 
 .playbutton{
-	background-image: url('1play.png');
+	background-image: asset-url('1play.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	width:80px;
@@ -174,7 +193,7 @@ button{
 }
 
 .playbutton:hover{
-	background-image: url('1playhov.png');
+	background-image: asset-url('1playhov.png');
 	-webkit-transition: all .05s ease;
   	-moz-transition: all .05s ease;
   	-o-transition: all .05s ease;
@@ -183,7 +202,7 @@ button{
 }
 
 .pausebutton{
-	background-image: url('1pause.png');
+	background-image: asset-url('1pause.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	width:65px;
@@ -192,7 +211,7 @@ button{
 }
 
 .pausebutton:hover{
-	background-image: url('1pausehov.png');
+	background-image: asset-url('1pausehov.png');
 	-webkit-transition: all .05s ease;
   	-moz-transition: all .05s ease;
   	-o-transition: all .05s ease;
@@ -200,7 +219,7 @@ button{
 
 }
 .nextbutton{
-	background-image: url('1fwd.png');
+	background-image: asset-url('1fwd.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	width:80px;
@@ -209,7 +228,7 @@ button{
 }
 
 .nextbutton:hover{
-	background-image: url('1fwdhov.png');
+	background-image: asset-url('1fwdhov.png');
 	-webkit-transition: all .05s ease;
   	-moz-transition: all .05s ease;
   	-o-transition: all .05s ease;

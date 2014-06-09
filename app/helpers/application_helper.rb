@@ -6,9 +6,7 @@ module ApplicationHelper
 
   def authenticate_user
     if !current_user
-      redirect_to root_path
-    # else
-    # 	redirect_to users_path
+      redirect_to welcome_path
     end
   end
 end
