@@ -207,14 +207,15 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     }
 
     $scope.likeSong = function () {
+      console.log(currentSong);
       $scope.newUserSong = new UserSong({
         key: currentSong.key,
         artist: currentSong.artist,
-        title: currentSong.name,
+        title: currentSong.title,
         album: currentSong.album,
         duration: currentSong.duration,
-        is_explicit: currentSong.isExplicit,
-        image_url: currentSong.icon400
+        is_explicit: currentSong.is_explicit,
+        image_url: currentSong.image_url
       });
       console.log($scope.newUserSong);
       

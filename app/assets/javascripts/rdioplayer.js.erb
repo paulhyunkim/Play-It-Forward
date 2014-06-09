@@ -120,7 +120,7 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
 
   apiswf.rdio_queue(nextSong.key);
   console.log("Next song is '" + nextSong.title + "' with a key of " + nextSong.key);
-  lastSong = nextSong;
+  currentSong = nextSong;
 
   $('#city').text(nextSong.user.city);
   $('#state').text(nextSong.user.state);
