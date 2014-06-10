@@ -27,9 +27,8 @@ src: URL('brandon_grotesque_bold.ttf')
 	background-image:asset-url('arrow97.png');
 	-webkit-transition: all 300ms;
 	height:40px;
-	margin-top:70px;
+	margin:70px auto 0 auto;
 	width:40px;
-	margin-left: 50%;
 	background-size: contain;
 	background-repeat: no-repeat;
 	color:transparent;
@@ -45,8 +44,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	height:40px;
 	-webkit-transition: all 300ms;
 	width:40px;
-	margin-top:400px;
-	margin-left: 50%;
+	margin: 500px auto 0 auto;
 	background-size: contain;
 	background-repeat: no-repeat;
 	color:transparent;
@@ -61,8 +59,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	height:40px;
 	-webkit-transition: all 300ms;
 	width:40px;
-	margin-top:500px;
-	margin-left: 50%;
+	margin:550px auto 0 auto;
 	background-size: contain;
 	background-repeat: no-repeat;
 	color:transparent;

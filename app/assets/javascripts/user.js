@@ -102,8 +102,8 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
                     user.lat = userLat;
                     user.lng = userLng;
                     user.coordinates = "POINT(" + userLng + " " + userLat + ")";
-                    user.city = results[0].address_components[3].long_name;
-                    user.state = results[0].address_components[5].long_name;
+                    user.city = results[0].address_components[2].long_name;
+                    user.state = results[0].address_components[4].long_name;
                     curUser.$update();
                     console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
                 } else {
@@ -177,8 +177,12 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     }
 
     $scope.playSong = function(song) {
+      playlist[4] = song;
+      console.log("playing: " + song.title);
       apiswf.rdio_play(song.key);
-      currentSong = song;
+      queueRandomSong();
+      console.log(playlist);
+      // callback_object.repeatChanged();
     }
 
     $scope.saveSong = function (song) {
