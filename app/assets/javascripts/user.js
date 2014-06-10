@@ -98,13 +98,15 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
         var latlng = new google.maps.LatLng(userLat, userLng);
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
+                if (results[0]) {
                     user.lat = userLat;
                     user.lng = userLng;
                     user.coordinates = "POINT(" + userLng + " " + userLat + ")";
                     user.city = results[0].address_components[2].long_name;
                     user.state = results[0].address_components[4].long_name;
+                    console.log(results);
                     curUser.$update();
+                    console.log(curUser);
                     console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
                 } else {
                     element.text('Location not found');
