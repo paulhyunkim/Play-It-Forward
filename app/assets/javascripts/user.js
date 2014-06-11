@@ -4,8 +4,6 @@ var playlistSongs = [];
 var currentSong = null;
 
 
-
-
 var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
