@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	# before_action :authenticate_user, :except => [:new, :create, :update]
+	before_action :authenticate_user, :except => [:new, :create, :update]
 	respond_to :json, :html
 
 	
