@@ -5,6 +5,8 @@ var isPlayerLoaded = false;
 var playOrPaused = 0;
 var nextSong = "";
 var currentTrack = "";
+// playLast[past ]
+var playlist = [];
 
 $(document).ready(function() {
   // on page load use SWFObject to load the API swf into div#apiswf
@@ -34,7 +36,12 @@ $(document).ready(function() {
   $('#stop').click(function() { apiswf.rdio_stop(); });
   $('#pause').click(function() { apiswf.rdio_pause(); });
   $('#previous').click(function() { apiswf.rdio_previous(); });
-  $('#next').click(function() { apiswf.rdio_next(); });
+  $('#next').click(function() { 
+    shiftSongs();
+    queueRandomSong();
+    console.log(playlist);
+    apiswf.rdio_play(playlist[4].key); 
+  });
 });
 // Set a starter image
 $('#art').attr('src', "<%= asset_path('albumdefault.png') %>");
@@ -44,6 +51,7 @@ $('#art').attr('src', "<%= asset_path('albumdefault.png') %>");
 var callback_object = {};
 
 callback_object.ready = function ready(user) {
+  console.log("ready");
   // Called once the API SWF has loaded and is ready to accept method calls.
 
   // find the embed/object element
@@ -83,10 +91,12 @@ $("#searchtextid").keyup(function(event){
 
 
 callback_object.freeRemainingChanged = function freeRemainingChanged(remaining) {
+  console.log("freeRemainingChanged");
   $('#remaining').text(remaining);
 }
 
 callback_object.playStateChanged = function playStateChanged(playState) {
+  console.log("playStateChanged");
   playOrPaused = playState;
   // The playback state has changed.
   // The state can be: 0 - paused, 1 - playing, 2 - stopped, 3 - buffering or 4 - paused.
@@ -96,34 +106,28 @@ callback_object.playStateChanged = function playStateChanged(playState) {
 callback_object.playingTrackChanged = function playingTrackChanged(playingTrack, sourcePosition) {
   // The currently playing track has changed.
   // Track metadata is provided as playingTrack and the position within the playing source as sourcePosition.
-
+  console.log("playingTrackChanged");
   if (playingTrack != null) {
-    $('#track').text(playingTrack['name']);
-    $('#album').text(playingTrack['album']);
-    $('#artist').text(playingTrack['artist']);
-    $('#art').attr('src', playingTrack['icon']);
+    $('#track').text(playlist[4].title);
+    $('#album').text(playlist[4].album);
+    $('#artist').text(playlist[4].artist);
+    $('#art').attr('src', playlist[4].image_url);
   } else {
     $('#art').attr('src', "<%= asset_path('heart.png') %>");
   }
-
-  currentTrack = playingTrack;
 }
 
 callback_object.playingSourceChanged = function playingSourceChanged(playingSource) {
+  console.log("playingSourceChanged");
   // The currently playing source changed.
   // The source metadata, including a track listing is inside playingSource.
-  nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
-  while (nextSong === lastSong) {
-    nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
-  }
+  
+  // apiswf.rdio_queue(nextSong.key);
+  // console.log("Next song is '" + nextSong.title + "' with a key of " + nextSong.key);
+  // currentSong = nextSong;
 
-
-  apiswf.rdio_queue(nextSong.key);
-  console.log("Next song is '" + nextSong.title + "' with a key of " + nextSong.key);
-  lastSong = nextSong;
-
-  $('#city').text(nextSong.user.city);
-  $('#state').text(nextSong.user.state);
+  $('#city').text(playlist[4].user.city);
+  $('#state').text(playlist[4].user.state);
 
   // var scp = angular.element('[ng-controller="UserCtrl"]').scope();
   // scp.updateUserLocation();
@@ -137,11 +141,23 @@ callback_object.playingSourceChanged = function playingSourceChanged(playingSour
   // $("#userlocationinfo").attr("lat", nextSong.user.lat);
   // $("#userlocationinfo").attr("lng", nextSong.user.lng);
   geoFindMe();
+}
+var shiftSongs = function() {
+  playlist.shift();
+}
 
-
+var queueRandomSong = function() {
+  nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+  while (nextSong === playlist[4]) {
+    nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
+  }
+  apiswf.rdio_clearQueue();
+  apiswf.rdio_queue(nextSong.key);
+  playlist[5] = nextSong;
 }
 
 callback_object.volumeChanged = function volumeChanged(volume) {
+  console.log("volumeChanged");
   // The volume changed to volume, a number between 0 and 1.
 }
 
@@ -150,6 +166,7 @@ callback_object.muteChanged = function muteChanged(mute) {
 }
 
 callback_object.positionChanged = function positionChanged(position) {
+  console.log("positionChanged");
   //The position within the track changed to position seconds.
   // This happens both in response to a seek and during playback.
   var seconds = "";
@@ -160,7 +177,7 @@ callback_object.positionChanged = function positionChanged(position) {
   }
 
 
-  var totalTime = currentTrack['duration'];
+  var totalTime = playlist[4].duration;
   if (totalTime % 60 < 10) {
     totalSeconds = "0" + (totalTime % 60);
   } else {
@@ -173,6 +190,7 @@ callback_object.positionChanged = function positionChanged(position) {
   }
 
 callback_object.queueChanged = function queueChanged(newQueue) {
+  console.log("queueChanged");
   // The queue has changed to newQueue.
 }
 
@@ -182,6 +200,7 @@ callback_object.shuffleChanged = function shuffleChanged(shuffle) {
 }
 
 callback_object.repeatChanged = function repeatChanged(repeatMode) {
+  console.log("pressed play")
   // The repeat mode change.
   // repeatMode will be one of: 0: no-repeat, 1: track-repeat or 2: whole-source-repeat.
 }

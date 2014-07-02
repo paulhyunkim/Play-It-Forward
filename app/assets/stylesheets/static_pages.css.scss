@@ -27,9 +27,8 @@ src: URL('brandon_grotesque_bold.ttf')
 	background-image:asset-url('arrow97.png');
 	-webkit-transition: all 300ms;
 	height:40px;
-	margin-top:70px;
+	margin:70px auto 0 auto;
 	width:40px;
-	margin-left: 50%;
 	background-size: contain;
 	background-repeat: no-repeat;
 	color:transparent;
@@ -45,8 +44,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	height:40px;
 	-webkit-transition: all 300ms;
 	width:40px;
-	margin-top:400px;
-	margin-left: 50%;
+	margin: 500px auto 0 auto;
 	background-size: contain;
 	background-repeat: no-repeat;
 	color:transparent;
@@ -58,8 +56,7 @@ src: URL('brandon_grotesque_bold.ttf')
 	height:40px;
 	-webkit-transition: all 300ms;
 	width:40px;
-	margin-top:500px;
-	margin-left: 50%;
+	margin:550px auto 0 auto;
 	background-size: contain;
 	background-repeat: no-repeat;
 	color:transparent;
@@ -152,7 +149,8 @@ src: URL('brandon_grotesque_bold.ttf')
 
 .getstartedbox{
 	position: relative;
-	font-family: 'Raleway', sans-serif !important;
+	font-family: 'Brandon Grotesque Bold';
+	font-size:30px;
 	width: 400px;
 	height: 300px;
 	float: right;
@@ -222,12 +220,15 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 .sectionbox {
 	padding-top:100px;
-	height:710px;
+	height:780px;
 	background-color: #5c243b;
 	overflow:hidden;
 	font-family: 'Brandon Grotesque Bold';
 	text-align:center;
 }
+
+
+
 .inbetween {
 	padding-top:100px;
 	padding-bottom:70px;
@@ -285,16 +286,13 @@ src: URL('brandon_grotesque_bold.ttf')
 #whoarewe{
 	padding-top:150px;
 	text-align:center;
+	background-image: url('divdiv.jpg');
+	background-size: cover;
 	background-position: center center;
 }
 #whoarewe2{
 	background-image: url('div2.jpg');
 	background-size: cover;
-	background-position: center center;
-}
-#whoarewe3{
-	padding-top:150px;
-	text-align:center;
 	background-position: center center;
 }
 
@@ -395,9 +393,7 @@ nav{
 @media only screen and (max-width: 444px) {
 
 
-.sectionbox {
-	padding:70px;
-}
+
 
 #whoarewe {
 	padding:0;

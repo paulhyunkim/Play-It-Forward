@@ -1,13 +1,13 @@
 
 $(document).ready(function(){
-
+  console.log('hi');
 	$('#introbox #play').hide().fadeIn(2000);
 	$('#introbox h2').hide().delay(700).fadeIn(2000);
 
 // ----------------------------------------------------
 
 }); //closes document.ready
-$(function(){ $(document).foundation(); });
+
 
 
 $('#loginmodal').bind('opened', function() {
