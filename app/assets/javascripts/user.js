@@ -4,8 +4,6 @@ var playlistSongs = [];
 var currentSong = null;
 
 
-
-
 var userApp = angular.module('user_app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
@@ -98,13 +96,15 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
         var latlng = new google.maps.LatLng(userLat, userLng);
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
+                if (results[0]) {
                     user.lat = userLat;
                     user.lng = userLng;
                     user.coordinates = "POINT(" + userLng + " " + userLat + ")";
-                    user.city = results[0].address_components[3].long_name;
-                    user.state = results[0].address_components[5].long_name;
+                    user.city = results[0].address_components[2].long_name;
+                    user.state = results[0].address_components[4].long_name;
+                    console.log(results);
                     curUser.$update();
+                    console.log(curUser);
                     console.log("User location updated. Latitude: " + userLat + " Longitude: " + userLng);
                 } else {
                     element.text('Location not found');
@@ -177,8 +177,12 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
     }
 
     $scope.playSong = function(song) {
+      playlist[4] = song;
+      console.log("playing: " + song.title);
       apiswf.rdio_play(song.key);
-      currentSong = song;
+      queueRandomSong();
+      console.log(playlist);
+      // callback_object.repeatChanged();
     }
 
     $scope.saveSong = function (song) {
