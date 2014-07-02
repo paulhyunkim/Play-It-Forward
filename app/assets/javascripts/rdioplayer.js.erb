@@ -23,10 +23,8 @@ $(document).ready(function() {
       'apiswf', // the ID of the element that will be replaced with the SWF
       1, 1, '9.0.0', 'expressInstall.swf', flashvars, params, attributes);
 
-
   // set up the controls
   $('#play').click(function() {
-    console.log(playOrPaused);
     if (playOrPaused === 0) {
       apiswf.rdio_play($('#play_key').val());
     } else if (playOrPaused === 1) {
@@ -51,7 +49,6 @@ $('#art').attr('src', "<%= asset_path('albumdefault.png') %>");
 var callback_object = {};
 
 callback_object.ready = function ready(user) {
-  console.log("ready");
   // Called once the API SWF has loaded and is ready to accept method calls.
 
   // find the embed/object element
@@ -91,12 +88,10 @@ $("#searchtextid").keyup(function(event){
 
 
 callback_object.freeRemainingChanged = function freeRemainingChanged(remaining) {
-  console.log("freeRemainingChanged");
   $('#remaining').text(remaining);
 }
 
 callback_object.playStateChanged = function playStateChanged(playState) {
-  console.log("playStateChanged");
   playOrPaused = playState;
   // The playback state has changed.
   // The state can be: 0 - paused, 1 - playing, 2 - stopped, 3 - buffering or 4 - paused.
@@ -151,13 +146,12 @@ var queueRandomSong = function() {
   while (nextSong === playlist[4]) {
     nextSong = playlistSongs[Math.floor(Math.random()*playlistSongs.length)];
   }
-  apiswf.rdio_clearQueue();
+  // apiswf.rdio_clearQueue();
   apiswf.rdio_queue(nextSong.key);
   playlist[5] = nextSong;
 }
 
 callback_object.volumeChanged = function volumeChanged(volume) {
-  console.log("volumeChanged");
   // The volume changed to volume, a number between 0 and 1.
 }
 
@@ -166,7 +160,6 @@ callback_object.muteChanged = function muteChanged(mute) {
 }
 
 callback_object.positionChanged = function positionChanged(position) {
-  console.log("positionChanged");
   //The position within the track changed to position seconds.
   // This happens both in response to a seek and during playback.
   var seconds = "";
@@ -186,11 +179,17 @@ callback_object.positionChanged = function positionChanged(position) {
 
   $('#position').text(Math.floor(Math.round(position)/60) + ":" + seconds + " / " + Math.floor(Math.round(totalTime)/60) + ":" + totalSeconds);
 
+  if (position > 10) {
+    queueRandomSong();
+    apiswf.rdio_next();
+  }
+
 
   }
 
 callback_object.queueChanged = function queueChanged(newQueue) {
   console.log("queueChanged");
+  console.log(newQueue);
   // The queue has changed to newQueue.
 }
 
@@ -200,7 +199,6 @@ callback_object.shuffleChanged = function shuffleChanged(shuffle) {
 }
 
 callback_object.repeatChanged = function repeatChanged(repeatMode) {
-  console.log("pressed play")
   // The repeat mode change.
   // repeatMode will be one of: 0: no-repeat, 1: track-repeat or 2: whole-source-repeat.
 }

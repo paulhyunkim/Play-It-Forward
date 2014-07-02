@@ -178,9 +178,10 @@ userApp.controller('UserCtrl', ['UserSong', 'SearchSong', 'PlaylistSong', 'Curre
 
     $scope.playSong = function(song) {
       playlist[4] = song;
-      console.log("playing: " + song.title);
-      apiswf.rdio_play(song.key);
       queueRandomSong();
+      console.log("playing: " + song.title);
+      queueRandomSong();
+      apiswf.rdio_play(song.key);
       console.log(playlist);
       // callback_object.repeatChanged();
     }
