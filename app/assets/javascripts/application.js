@@ -16,3 +16,5 @@
 //= require angular-resource
 //= require foundation
 //= require_tree .
+
+$(function(){ $(document).foundation(); });

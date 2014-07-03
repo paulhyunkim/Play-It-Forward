@@ -49,9 +49,6 @@ src: URL('brandon_grotesque_bold.ttf')
 	background-repeat: no-repeat;
 	color:transparent;
 }
-#arrowscroll2:hover{
-	background-image:asset-url('arrowwhite.png');
-}
 
 
 #arrowscroll3{
@@ -223,12 +220,15 @@ src: URL('brandon_grotesque_bold.ttf')
 }
 .sectionbox {
 	padding-top:100px;
-	height:710px;
+	height:780px;
 	background-color: #5c243b;
 	overflow:hidden;
 	font-family: 'Brandon Grotesque Bold';
 	text-align:center;
 }
+
+
+
 .inbetween {
 	padding-top:100px;
 	padding-bottom:70px;
@@ -393,9 +393,7 @@ nav{
 @media only screen and (max-width: 444px) {
 
 
-.sectionbox {
-	padding:70px;
-}
+
 
 #whoarewe {
 	padding:0;
