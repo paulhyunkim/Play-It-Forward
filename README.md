@@ -1,6 +1,13 @@
 ## Play It Forward
 
-Built as my third project at WDI.
+Built as my third project at WDI. 
+
+Team project:
+
+**Dinna Gonzales** (https://github.com/dinnagonzales)
+
+**Paul Kim** (https://github.com/paulhyunkim)
+**Aaron Tsang** (https://github.com/Aarontsang8)
 
 An anonymous music sharing app. Listen to what other users near you are listening to and see where they are located on a map.
 
